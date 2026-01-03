@@ -1,6 +1,7 @@
 /*
 !_posts/
 !assets/
+!site/
 !_config.yml
 !Gemfile
 !Gemfile.lock
