@@ -6,6 +6,6 @@
 !Gemfile.lock
 !index.markdown
 !about.markdown
+!blogs.markdown    <-- Add this line
 !404.html
 !.gitignore
-!index.html
