@@ -1,0 +1,39 @@
+# Site settings
+title: "Your Name or Site Title"
+email: your-email@example.com
+description: "A professional portfolio and blog powered by Hydejack."
+
+# If hosting at username.github.io, leave baseurl empty ""
+# If hosting at username.github.io/my-site, set baseurl to "/my-site"
+baseurl: "" 
+url: "https://yourusername.github.io" 
+
+# Hydejack Specific Settings
+author:
+  name: Your Name
+  email: your-email@example.com
+  image: /assets/img/profile.jpg # You'll need to add this file later
+  bio: "Software Developer, Writer, and Explorer."
+
+# Build settings
+remote_theme: hydecorp/hydejack@v9
+plugins:
+  - jekyll-remote-theme
+  - jekyll-include-cache
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Hydejack configurations
+hydejack:
+  # Color theme: 'light', 'dark', or 'auto' (detects system preference)
+  theme: auto
+  # Accent color (Hex code)
+  accent_color: "#ef5350"
+
+# Exclude vendor folder since we are installing gems locally
+exclude:
+  - vendor/
+  - .bundle/
+  - Gemfile.lock
+  - Gemfile
