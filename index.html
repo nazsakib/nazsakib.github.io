@@ -14,7 +14,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@500&display=swap"
             rel="stylesheet"
         />
 
@@ -48,25 +48,27 @@
                 scroll-behavior: smooth;
             }
             body {
-                font-family: "DM Sans", sans-serif;
+                font-family: "Outfit", sans-serif; /* Clean, modern body text */
                 background: var(--white);
                 color: var(--ink);
+                line-height: 1.6;
                 overflow-x: hidden;
             }
             h1,
             h2,
             h3,
             h4 {
-                font-family: "Playfair Display", serif;
+                font-family: "Inter", sans-serif; /* Bold, high-tech headings */
+                letter-spacing: -0.02em;
             }
 
             /* ============================================
        CONTAINER — 900px max, feels editorial
     ============================================ */
             .container {
-                max-width: 900px;
+                max-width: 1100px;
                 margin: 0 auto;
-                padding: 0 28px;
+                padding: 0 40px;
             }
             section {
                 padding: 88px 0;
@@ -505,9 +507,9 @@
     ============================================ */
             .about-grid {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 44px;
-                align-items: start; /* both columns start from top */
+                grid-template-columns: 1.2fr 0.8fr;
+                gap: 60px;
+                align-items: center; /* both columns start from top */
             }
             .about-bio p {
                 font-size: 0.96rem;
