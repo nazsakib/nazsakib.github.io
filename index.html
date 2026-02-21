@@ -1767,9 +1767,10 @@
           Done! Every submission lands in your inbox.
         -->
                         <form
-                            id="contact-form"
+                            id="my-form"
+                            action="https://formspree.io/f/mnjbgnkk"
+                            method="POST"
                             class="cf"
-                            onsubmit="handleSubmit(event)"
                         >
                             <div class="cf-row">
                                 <input
@@ -1797,7 +1798,7 @@
                                 placeholder="Your message..."
                                 required
                             ></textarea>
-                            <!-- spam trap -->
+
                             <input
                                 type="text"
                                 name="_gotcha"
@@ -1809,18 +1810,13 @@
                             <button
                                 type="submit"
                                 class="btn-light"
-                                id="submit-btn"
+                                id="my-form-button"
                             >
                                 <span id="btn-icon">📨</span>
                                 <span id="btn-text">Send Message</span>
                             </button>
-                            <p id="form-ok" class="form-msg ok">
-                                ✓ Message sent! I'll get back to you soon.
-                            </p>
-                            <p id="form-err" class="form-msg err">
-                                ✗ Something went wrong. Email me directly at
-                                sakibnazmush@gmail.com
-                            </p>
+
+                            <p id="my-form-status" class="form-msg"></p>
                         </form>
                     </div>
                 </div>
@@ -1917,53 +1913,68 @@
                 .forEach((b) => bo.observe(b));
 
             /* Contact form — Formspree
-     ✏️ EDIT: Replace 'YOUR_FORMSPREE_ID' with your real ID from https://formspree.io
-     Example: const FORMSPREE_ID = 'xpwzabcd';
-  */
-            const FORMSPREE_ID = "mnjbgnkk";
+               ✏️ EDIT: Replace 'YOUR_FORMSPREE_ID' with your real ID from https://formspree.io
+               Example: const FORMSPREE_ID = 'xpwzabcd';
+            */
+            var form = document.getElementById("my-form");
 
-            async function handleSubmit(e) {
-                e.preventDefault();
-                const form = document.getElementById("contact-form");
-                const btn = document.getElementById("submit-btn");
-                const icon = document.getElementById("btn-icon");
-                const txt = document.getElementById("btn-text");
-                const ok = document.getElementById("form-ok");
-                const err = document.getElementById("form-err");
-                ok.style.display = err.style.display = "none";
+            async function handleSubmit(event) {
+                event.preventDefault();
+                var status = document.getElementById("my-form-status");
+                var btn = document.getElementById("my-form-button");
+                var icon = document.getElementById("btn-icon");
+                var txt = document.getElementById("btn-text");
+                var data = new FormData(event.target);
+
+                // UI Loading State
                 btn.disabled = true;
                 icon.textContent = "⏳";
-                txt.textContent = "Sending…";
+                txt.textContent = "Sending...";
+                status.style.display = "none";
 
-                if (FORMSPREE_ID === "mnjbgnkk") {
-                    await new Promise((r) => setTimeout(r, 900));
-                    ok.textContent = "✓ Message Sent Successfully.";
-                    ok.style.display = "block";
-                    form.reset();
-                    btn.disabled = false;
-                    icon.textContent = "📨";
-                    txt.textContent = "Send Message";
-                    return;
-                }
-                try {
-                    const res = await fetch(
-                        `https://formspree.io/f/${FORMSPREE_ID}`,
-                        {
-                            method: "POST",
-                            body: new FormData(form),
-                            headers: { Accept: "application/json" },
-                        },
-                    );
-                    res.ok
-                        ? ((ok.style.display = "block"), form.reset())
-                        : (err.style.display = "block");
-                } catch {
-                    err.style.display = "block";
-                }
-                btn.disabled = false;
-                icon.textContent = "📨";
-                txt.textContent = "Send Message";
+                fetch(event.target.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        Accept: "application/json",
+                    },
+                })
+                    .then((response) => {
+                        status.style.display = "block";
+                        if (response.ok) {
+                            status.className = "form-msg ok";
+                            status.innerHTML = "✓ Thanks for your submission!";
+                            form.reset();
+                        } else {
+                            status.className = "form-msg err";
+                            response.json().then((data) => {
+                                if (Object.hasOwn(data, "errors")) {
+                                    status.innerHTML =
+                                        "✗ " +
+                                        data["errors"]
+                                            .map((error) => error["message"])
+                                            .join(", ");
+                                } else {
+                                    status.innerHTML =
+                                        "✗ Oops! There was a problem submitting your form";
+                                }
+                            });
+                        }
+                    })
+                    .catch((error) => {
+                        status.style.display = "block";
+                        status.className = "form-msg err";
+                        status.innerHTML =
+                            "✗ Oops! There was a problem submitting your form";
+                    })
+                    .finally(() => {
+                        // Reset Button State
+                        btn.disabled = false;
+                        icon.textContent = "📨";
+                        txt.textContent = "Send Message";
+                    });
             }
+            form.addEventListener("submit", handleSubmit);
         </script>
     </body>
 </html>
