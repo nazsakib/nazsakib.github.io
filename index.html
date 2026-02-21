@@ -1,0 +1,2750 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- ✏️ EDIT: Page title & SEO meta -->
+        <title>
+            Sakib MD Nazmush — Technical Support Engineer & WordPress Developer
+        </title>
+        <meta
+            name="description"
+            content="Technical Support Engineer | WordPress & LMS Developer with 4.9★ rating at Zepto Apps. Expert in customer support, plugin development, and LMS solutions."
+        />
+        <meta
+            name="keywords"
+            content="Technical Support Engineer, WordPress Developer, LMS Developer, Zepto Apps, Light Maintenance"
+        />
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Tailwind CSS CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <style>
+            /* =============================================
+       CSS CUSTOM PROPERTIES — EDIT COLORS HERE
+       Palette: #EDDCC6 (sand) · #7EACB5 (teal) · #FFF4EA (cream) · #0B2D72 (navy)
+    ============================================= */
+            :root {
+                --sand: #eddcc6;
+                --teal: #7eacb5;
+                --teal-d: #5a9099;
+                --cream: #fff4ea;
+                --navy: #0b2d72;
+                --navy-2: #0d3585;
+                --muted: #7a8b9a;
+                /* Aliases kept for backward compat in components */
+                --honey: #7eacb5;
+                --amber: #0b2d72;
+            }
+
+            /* =============================================
+       BASE
+    ============================================= */
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                font-family: "DM Sans", sans-serif;
+                background: var(--cream);
+                color: var(--navy);
+                overflow-x: hidden;
+            }
+
+            /* Headings font */
+            h1,
+            h2,
+            h3,
+            h4 {
+                font-family: "Playfair Display", serif;
+            }
+
+            /* =============================================
+       NAVBAR
+    ============================================= */
+            #navbar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+                transition:
+                    background 0.4s ease,
+                    box-shadow 0.4s ease;
+                background: transparent;
+            }
+            #navbar.scrolled {
+                background: rgba(255, 244, 234, 0.96);
+                backdrop-filter: blur(12px);
+                box-shadow: 0 2px 24px rgba(11, 45, 114, 0.1);
+            }
+            .nav-link {
+                font-family: "DM Sans", sans-serif;
+                font-size: 0.875rem;
+                font-weight: 500;
+                letter-spacing: 0.04em;
+                color: var(--navy);
+                text-decoration: none;
+                position: relative;
+                padding: 4px 0;
+                transition: color 0.2s;
+            }
+            .nav-link::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: var(--teal);
+                transition: width 0.3s ease;
+            }
+            .nav-link:hover {
+                color: var(--teal-d);
+            }
+            .nav-link:hover::after {
+                width: 100%;
+            }
+
+            /* =============================================
+       SECTION GRADIENT BACKGROUNDS
+    ============================================= */
+            #hero {
+                background: linear-gradient(
+                    135deg,
+                    #fff4ea 0%,
+                    #eddcc6 45%,
+                    #d4c4ae 100%
+                );
+                min-height: 100vh;
+                position: relative;
+                overflow: hidden;
+            }
+            #hero::before {
+                content: "";
+                position: absolute;
+                top: -120px;
+                right: -120px;
+                width: 560px;
+                height: 560px;
+                border-radius: 50%;
+                background: radial-gradient(
+                    circle,
+                    rgba(126, 172, 181, 0.25) 0%,
+                    transparent 70%
+                );
+                pointer-events: none;
+            }
+            #hero::after {
+                content: "";
+                position: absolute;
+                bottom: -80px;
+                left: -60px;
+                width: 380px;
+                height: 380px;
+                border-radius: 50%;
+                background: radial-gradient(
+                    circle,
+                    rgba(11, 45, 114, 0.08) 0%,
+                    transparent 70%
+                );
+                pointer-events: none;
+            }
+
+            #about {
+                background: linear-gradient(
+                    160deg,
+                    #fff4ea 0%,
+                    #eaf4f6 55%,
+                    #d0e8ec 100%
+                );
+            }
+            #skills {
+                background: linear-gradient(
+                    135deg,
+                    #fff4ea 0%,
+                    #eddcc6 50%,
+                    #e0cdb5 100%
+                );
+            }
+            #experience {
+                background: linear-gradient(
+                    150deg,
+                    #eaf4f6 0%,
+                    #c8e2e7 50%,
+                    #b3d6dd 100%
+                );
+            }
+            #projects {
+                background: linear-gradient(
+                    135deg,
+                    #fff4ea 0%,
+                    #eddcc6 50%,
+                    #d4c4ae 100%
+                );
+            }
+            #contact {
+                background: linear-gradient(
+                    160deg,
+                    #0b2d72 0%,
+                    #0d3585 60%,
+                    #0a265f 100%
+                );
+                color: #eaf4f6;
+            }
+
+            /* =============================================
+       HERO PROFILE IMAGE
+    ============================================= */
+            .profile-img-wrapper {
+                position: relative;
+                width: 320px;
+                height: 320px;
+                flex-shrink: 0;
+            }
+            .profile-img-wrapper::before {
+                content: "";
+                position: absolute;
+                inset: -12px;
+                border-radius: 50%;
+                background: conic-gradient(
+                    var(--teal),
+                    var(--navy),
+                    var(--teal-d),
+                    var(--sand),
+                    var(--teal)
+                );
+                animation: spinGlow 6s linear infinite;
+                opacity: 0.7;
+            }
+            .profile-img-wrapper::after {
+                content: "";
+                position: absolute;
+                inset: -6px;
+                border-radius: 50%;
+                background: var(--cream);
+            }
+            @keyframes spinGlow {
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+            .profile-img {
+                position: relative;
+                z-index: 2;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 4px solid var(--sand);
+            }
+            /* Placeholder avatar when no image is set */
+            .profile-placeholder {
+                position: relative;
+                z-index: 2;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                background: linear-gradient(135deg, var(--teal), var(--navy));
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: "Playfair Display", serif;
+                font-size: 5rem;
+                font-weight: 700;
+                color: #fff;
+                border: 4px solid var(--sand);
+                letter-spacing: -0.02em;
+            }
+
+            /* =============================================
+       HERO TEXT ANIMATIONS
+    ============================================= */
+            .hero-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                background: rgba(126, 172, 181, 0.15);
+                border: 1px solid rgba(126, 172, 181, 0.4);
+                border-radius: 50px;
+                padding: 6px 18px;
+                font-size: 0.8rem;
+                font-weight: 600;
+                letter-spacing: 0.08em;
+                color: var(--teal-d);
+                text-transform: uppercase;
+                animation: fadeUp 0.7s ease both;
+            }
+            .hero-name {
+                font-size: clamp(2.8rem, 5vw, 4.5rem);
+                font-weight: 900;
+                line-height: 1.05;
+                color: var(--navy);
+                animation: fadeUp 0.8s 0.15s ease both;
+            }
+            .hero-name span {
+                color: var(--teal-d);
+            }
+            .hero-title {
+                font-family: "DM Sans", sans-serif;
+                font-size: clamp(1rem, 1.8vw, 1.2rem);
+                font-weight: 400;
+                color: var(--muted);
+                line-height: 1.6;
+                animation: fadeUp 0.8s 0.3s ease both;
+            }
+            .hero-tagline {
+                font-family: "Playfair Display", serif;
+                font-style: italic;
+                font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+                color: var(--navy);
+                border-left: 3px solid var(--teal);
+                padding-left: 16px;
+                animation: fadeUp 0.8s 0.45s ease both;
+            }
+            .hero-cta {
+                animation: fadeUp 0.8s 0.6s ease both;
+            }
+            @keyframes fadeUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(24px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            /* =============================================
+       STAT BADGES
+    ============================================= */
+            .stat-card {
+                background: rgba(255, 255, 255, 0.65);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(126, 172, 181, 0.3);
+                border-radius: 16px;
+                padding: 16px 20px;
+                text-align: center;
+                transition:
+                    transform 0.2s,
+                    box-shadow 0.2s;
+            }
+            .stat-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 8px 24px rgba(126, 172, 181, 0.25);
+            }
+            .stat-num {
+                font-family: "Playfair Display", serif;
+                font-size: 1.8rem;
+                font-weight: 700;
+                color: var(--navy);
+            }
+            .stat-label {
+                font-size: 0.72rem;
+                color: var(--muted);
+                font-weight: 500;
+                margin-top: 2px;
+            }
+
+            /* =============================================
+       SECTION HEADER
+    ============================================= */
+            .section-label {
+                display: inline-block;
+                font-family: "DM Sans", sans-serif;
+                font-size: 0.75rem;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: var(--teal-d);
+                background: rgba(126, 172, 181, 0.15);
+                border: 1px solid rgba(126, 172, 181, 0.35);
+                padding: 4px 14px;
+                border-radius: 50px;
+                margin-bottom: 12px;
+            }
+            .section-title {
+                font-size: clamp(2rem, 4vw, 2.8rem);
+                font-weight: 700;
+                color: var(--navy);
+                line-height: 1.1;
+            }
+            .section-divider {
+                width: 60px;
+                height: 3px;
+                background: linear-gradient(to right, var(--teal), var(--navy));
+                border-radius: 2px;
+                margin: 16px 0 32px;
+            }
+
+            /* =============================================
+       CARDS
+    ============================================= */
+            .card {
+                background: rgba(255, 255, 255, 0.55);
+                backdrop-filter: blur(8px);
+                border: 1px solid rgba(255, 255, 255, 0.7);
+                border-radius: 20px;
+                padding: 28px;
+                transition:
+                    transform 0.25s ease,
+                    box-shadow 0.25s ease;
+            }
+            .card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 16px 40px rgba(11, 45, 114, 0.12);
+            }
+
+            /* =============================================
+       SKILL BARS
+    ============================================= */
+            .skill-bar-track {
+                height: 8px;
+                border-radius: 100px;
+                background: rgba(126, 172, 181, 0.2);
+                overflow: hidden;
+            }
+            .skill-bar-fill {
+                height: 100%;
+                border-radius: 100px;
+                background: linear-gradient(to right, var(--teal), var(--navy));
+                width: 0;
+                transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            /* =============================================
+       EXPERIENCE TIMELINE
+    ============================================= */
+            .timeline-line {
+                position: absolute;
+                left: 23px;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background: linear-gradient(
+                    to bottom,
+                    var(--teal),
+                    transparent
+                );
+            }
+            .timeline-dot {
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, var(--teal), var(--navy));
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+                box-shadow: 0 0 0 6px rgba(126, 172, 181, 0.2);
+                font-size: 1.2rem;
+            }
+
+            /* =============================================
+       PROJECT CARDS
+    ============================================= */
+            .project-card {
+                background: rgba(255, 255, 255, 0.6);
+                border: 1px solid rgba(255, 255, 255, 0.8);
+                border-radius: 20px;
+                overflow: hidden;
+                transition:
+                    transform 0.3s,
+                    box-shadow 0.3s;
+            }
+            .project-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 20px 48px rgba(11, 45, 114, 0.18);
+            }
+            .project-card-top {
+                height: 10px;
+                background: linear-gradient(to right, var(--teal), var(--navy));
+            }
+            .tech-tag {
+                display: inline-block;
+                font-size: 0.72rem;
+                font-weight: 600;
+                background: rgba(126, 172, 181, 0.15);
+                border: 1px solid rgba(126, 172, 181, 0.35);
+                color: var(--teal-d);
+                padding: 3px 10px;
+                border-radius: 50px;
+            }
+
+            /* =============================================
+       CONTACT SECTION
+    ============================================= */
+            .contact-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                color: #c8e2e7;
+                text-decoration: none;
+                font-weight: 500;
+                transition: color 0.2s;
+            }
+            .contact-link:hover {
+                color: var(--teal);
+            }
+            .contact-icon-box {
+                width: 44px;
+                height: 44px;
+                border-radius: 12px;
+                background: rgba(126, 172, 181, 0.15);
+                border: 1px solid rgba(126, 172, 181, 0.3);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.1rem;
+                transition: background 0.2s;
+            }
+            .contact-link:hover .contact-icon-box {
+                background: rgba(126, 172, 181, 0.3);
+            }
+            .contact-form input,
+            .contact-form textarea {
+                width: 100%;
+                background: rgba(255, 255, 255, 0.07);
+                border: 1px solid rgba(126, 172, 181, 0.3);
+                border-radius: 12px;
+                padding: 14px 18px;
+                color: #c8e2e7;
+                font-family: "DM Sans", sans-serif;
+                font-size: 0.95rem;
+                outline: none;
+                transition: border-color 0.2s;
+            }
+            .contact-form input::placeholder,
+            .contact-form textarea::placeholder {
+                color: rgba(200, 226, 231, 0.4);
+            }
+            .contact-form input:focus,
+            .contact-form textarea:focus {
+                border-color: rgba(126, 172, 181, 0.65);
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            /* =============================================
+       BUTTONS
+    ============================================= */
+            .btn-primary {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                background: linear-gradient(135deg, var(--teal), var(--navy));
+                color: #fff;
+                font-weight: 600;
+                font-size: 0.95rem;
+                padding: 14px 28px;
+                border-radius: 50px;
+                border: none;
+                cursor: pointer;
+                text-decoration: none;
+                transition:
+                    transform 0.2s,
+                    box-shadow 0.2s;
+                box-shadow: 0 4px 16px rgba(11, 45, 114, 0.25);
+            }
+            .btn-primary:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 28px rgba(11, 45, 114, 0.4);
+            }
+            .btn-outline {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                background: transparent;
+                color: var(--navy);
+                font-weight: 600;
+                font-size: 0.95rem;
+                padding: 13px 28px;
+                border-radius: 50px;
+                border: 2px solid var(--teal);
+                cursor: pointer;
+                text-decoration: none;
+                transition: all 0.2s;
+            }
+            .btn-outline:hover {
+                background: var(--teal);
+                color: #fff;
+            }
+
+            /* =============================================
+       MOBILE MENU
+    ============================================= */
+            #mobile-menu {
+                display: none;
+            }
+            #mobile-menu.open {
+                display: flex;
+            }
+
+            /* =============================================
+       UTILITIES
+    ============================================= */
+            .container {
+                max-width: 1160px;
+                margin: 0 auto;
+                padding: 0 24px;
+            }
+            section {
+                padding: 96px 0;
+            }
+
+            /* Scroll reveal */
+            .reveal {
+                opacity: 0;
+                transform: translateY(30px);
+                transition:
+                    opacity 0.6s ease,
+                    transform 0.6s ease;
+            }
+            .reveal.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* Footer */
+            footer {
+                background: #111;
+                color: rgba(254, 243, 199, 0.5);
+                text-align: center;
+                padding: 24px;
+                font-size: 0.8rem;
+            }
+
+            /* =============================================
+       RESPONSIVE OVERRIDES
+    ============================================= */
+            @media (max-width: 768px) {
+                .profile-img-wrapper {
+                    width: 220px;
+                    height: 220px;
+                }
+                .profile-placeholder {
+                    font-size: 3.5rem;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- ====================================================
+     NAVBAR — Edit links or name here
+==================================================== -->
+        <nav id="navbar">
+            <div class="container">
+                <div
+                    style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 18px 0;
+                    "
+                >
+                    <!-- ✏️ EDIT: Logo / name -->
+                    <a
+                        href="#hero"
+                        style="
+                            font-family: &quot;Playfair Display&quot;, serif;
+                            font-weight: 700;
+                            font-size: 1.2rem;
+                            color: var(--navy);
+                            text-decoration: none;
+                            letter-spacing: -0.01em;
+                        "
+                    >
+                        Sakib <span style="color: var(--teal-d)">Nazmush</span>
+                    </a>
+
+                    <!-- Desktop nav links -->
+                    <div
+                        style="display: flex; gap: 32px; align-items: center"
+                        class="hidden-mobile"
+                    >
+                        <!-- ✏️ EDIT: Nav links -->
+                        <a href="#about" class="nav-link">About</a>
+                        <a href="#skills" class="nav-link">Skills</a>
+                        <a href="#experience" class="nav-link">Experience</a>
+                        <a href="#projects" class="nav-link">Projects</a>
+                        <a href="#contact" class="nav-link">Contact</a>
+                        <a
+                            href="#contact"
+                            class="btn-primary"
+                            style="padding: 10px 22px; font-size: 0.85rem"
+                            >Hire Me</a
+                        >
+                    </div>
+
+                    <!-- Mobile hamburger -->
+                    <button
+                        id="hamburger"
+                        aria-label="Menu"
+                        style="
+                            display: none;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            flex-direction: column;
+                            gap: 5px;
+                        "
+                    >
+                        <span
+                            style="
+                                width: 24px;
+                                height: 2px;
+                                background: var(--navy);
+                                display: block;
+                                transition: all 0.3s;
+                            "
+                        ></span>
+                        <span
+                            style="
+                                width: 24px;
+                                height: 2px;
+                                background: var(--navy);
+                                display: block;
+                                transition: all 0.3s;
+                            "
+                        ></span>
+                        <span
+                            style="
+                                width: 24px;
+                                height: 2px;
+                                background: var(--navy);
+                                display: block;
+                                transition: all 0.3s;
+                            "
+                        ></span>
+                    </button>
+                </div>
+
+                <!-- Mobile menu -->
+                <div
+                    id="mobile-menu"
+                    style="
+                        flex-direction: column;
+                        gap: 16px;
+                        padding: 16px 0 24px;
+                        border-top: 1px solid rgba(126, 172, 181, 0.25);
+                    "
+                >
+                    <a
+                        href="#about"
+                        class="nav-link"
+                        onclick="closeMobileMenu()"
+                        >About</a
+                    >
+                    <a
+                        href="#skills"
+                        class="nav-link"
+                        onclick="closeMobileMenu()"
+                        >Skills</a
+                    >
+                    <a
+                        href="#experience"
+                        class="nav-link"
+                        onclick="closeMobileMenu()"
+                        >Experience</a
+                    >
+                    <a
+                        href="#projects"
+                        class="nav-link"
+                        onclick="closeMobileMenu()"
+                        >Projects</a
+                    >
+                    <a
+                        href="#contact"
+                        class="nav-link"
+                        onclick="closeMobileMenu()"
+                        >Contact</a
+                    >
+                    <a
+                        href="#contact"
+                        class="btn-primary"
+                        style="width: fit-content"
+                        onclick="closeMobileMenu()"
+                        >Hire Me</a
+                    >
+                </div>
+            </div>
+        </nav>
+
+        <!-- ====================================================
+     HERO SECTION
+     ✏️ EDIT: Name, title, tagline, email, image
+==================================================== -->
+        <section
+            id="hero"
+            style="
+                padding-top: 120px;
+                padding-bottom: 80px;
+                display: flex;
+                align-items: center;
+            "
+        >
+            <div class="container" style="width: 100%">
+                <div
+                    style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        gap: 48px;
+                        flex-wrap: wrap;
+                    "
+                >
+                    <!-- Left: Text content -->
+                    <div style="flex: 1; min-width: 280px; max-width: 620px">
+                        <div class="hero-badge">
+                            <span>⚡</span>
+                            <!-- ✏️ EDIT: Badge text -->
+                            Available for new opportunities
+                        </div>
+
+                        <h1 class="hero-name" style="margin-top: 20px">
+                            <!-- ✏️ EDIT: Your name -->
+                            Hi, I'm <br /><span>Sakib MD Nazmush</span>
+                        </h1>
+
+                        <p class="hero-title" style="margin-top: 16px">
+                            <!-- ✏️ EDIT: Your title/role -->
+                            Technical Support Engineer · WordPress & LMS
+                            Developer<br />
+                            at
+                            <strong style="color: var(--teal-d)"
+                                >Zepto Apps</strong
+                            >
+                        </p>
+
+                        <p class="hero-tagline" style="margin-top: 24px">
+                            <!-- ✏️ EDIT: Tagline / quote -->
+                            "Turning complex technical challenges into seamless
+                            user experiences — one ticket at a time."
+                        </p>
+
+                        <!-- Quick contact info -->
+                        <div
+                            style="
+                                margin-top: 28px;
+                                display: flex;
+                                flex-wrap: wrap;
+                                gap: 16px;
+                            "
+                            class="hero-cta"
+                        >
+                            <!-- ✏️ EDIT: Your email -->
+                            <a
+                                href="mailto:sakibnazmush@gmail.com"
+                                class="btn-primary"
+                            >
+                                <span>✉</span> sakibnazmush@gmail.com
+                            </a>
+                            <a href="#projects" class="btn-outline"
+                                >View My Work</a
+                            >
+                        </div>
+
+                        <!-- Stat badges -->
+                        <div
+                            style="
+                                display: flex;
+                                gap: 16px;
+                                margin-top: 36px;
+                                flex-wrap: wrap;
+                            "
+                        >
+                            <!-- ✏️ EDIT: Stats -->
+                            <div class="stat-card">
+                                <div class="stat-num">130+</div>
+                                <div class="stat-label">Tickets / Week</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-num">4.9★</div>
+                                <div class="stat-label">Support Rating</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-num">3+</div>
+                                <div class="stat-label">Years Experience</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Profile image -->
+                    <div style="display: flex; justify-content: center">
+                        <div class="profile-img-wrapper">
+                            <!--
+            ✏️ EDIT: Replace the placeholder div below with an <img> tag:
+            <img src="your-photo.jpg" alt="Sakib MD Nazmush" class="profile-img" />
+            Make sure the image is square for best results.
+          -->
+                            <div class="profile-placeholder">S</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scroll indicator -->
+                <div
+                    style="
+                        margin-top: 60px;
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                        opacity: 0.5;
+                    "
+                >
+                    <div
+                        style="
+                            width: 32px;
+                            height: 1px;
+                            background: var(--teal);
+                        "
+                    ></div>
+                    <span
+                        style="
+                            font-size: 0.75rem;
+                            letter-spacing: 0.1em;
+                            text-transform: uppercase;
+                            color: var(--navy);
+                        "
+                        >Scroll to explore</span
+                    >
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================================================
+     ABOUT SECTION
+     ✏️ EDIT: Bio paragraphs, highlights
+==================================================== -->
+        <section id="about">
+            <div class="container">
+                <div class="reveal">
+                    <span class="section-label">About Me</span>
+                    <h2 class="section-title">
+                        Passionate about solving<br />problems at scale
+                    </h2>
+                    <div class="section-divider"></div>
+                </div>
+
+                <div
+                    style="
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 48px;
+                        align-items: start;
+                    "
+                    class="about-grid reveal"
+                >
+                    <!-- Left: Bio text -->
+                    <div>
+                        <!-- ✏️ EDIT: Bio paragraphs -->
+                        <p
+                            style="
+                                font-size: 1.05rem;
+                                line-height: 1.8;
+                                color: #2d3748;
+                                margin-bottom: 20px;
+                            "
+                        >
+                            I'm <strong>Sakib MD Nazmush</strong>, a dedicated
+                            Technical Support Engineer and WordPress/LMS
+                            Developer at <strong>Zepto Apps</strong>. I thrive
+                            at the intersection of technical problem-solving and
+                            exceptional customer experience, consistently
+                            handling
+                            <strong>130–140 support tickets per week</strong>
+                            while maintaining a stellar
+                            <strong>4.9★ customer rating</strong>.
+                        </p>
+                        <p
+                            style="
+                                font-size: 1.05rem;
+                                line-height: 1.8;
+                                color: #2d3748;
+                                margin-bottom: 20px;
+                            "
+                        >
+                            With deep expertise in
+                            <strong
+                                >WordPress development, LMS platforms</strong
+                            >
+                            (LearnDash, LifterLMS, TutorLMS), and plugin
+                            customization, I build and maintain robust digital
+                            learning environments. I'm also the developer behind
+                            the <strong>Light Maintenance</strong> plugin — a
+                            lightweight solution for putting WordPress sites
+                            into maintenance mode.
+                        </p>
+                        <p
+                            style="
+                                font-size: 1.05rem;
+                                line-height: 1.8;
+                                color: #2d3748;
+                            "
+                        >
+                            Beyond work, I enjoy sharing knowledge through my
+                            <a
+                                href="https://dev.to/sakibnazmush"
+                                target="_blank"
+                                style="
+                                    color: var(--teal-d);
+                                    font-weight: 600;
+                                    text-decoration: none;
+                                "
+                                >dev.to blog</a
+                            >
+                            where I write about WordPress, LMS development, and
+                            technical support best practices.
+                        </p>
+                    </div>
+
+                    <!-- Right: Highlights list -->
+                    <div
+                        style="display: flex; flex-direction: column; gap: 16px"
+                    >
+                        <!-- ✏️ EDIT: Highlight items -->
+                        <div class="card">
+                            <div style="font-size: 1.6rem; margin-bottom: 8px">
+                                🏆
+                            </div>
+                            <h4
+                                style="
+                                    font-size: 1rem;
+                                    font-weight: 700;
+                                    margin-bottom: 6px;
+                                "
+                            >
+                                Top-Rated Support Engineer
+                            </h4>
+                            <p
+                                style="
+                                    font-size: 0.9rem;
+                                    color: var(--muted);
+                                    line-height: 1.6;
+                                "
+                            >
+                                Maintaining 4.9★ average across 130–140 weekly
+                                tickets at Zepto Apps with industry-leading
+                                resolution times.
+                            </p>
+                        </div>
+                        <div class="card">
+                            <div style="font-size: 1.6rem; margin-bottom: 8px">
+                                🔌
+                            </div>
+                            <h4
+                                style="
+                                    font-size: 1rem;
+                                    font-weight: 700;
+                                    margin-bottom: 6px;
+                                "
+                            >
+                                Plugin Developer
+                            </h4>
+                            <p
+                                style="
+                                    font-size: 0.9rem;
+                                    color: var(--muted);
+                                    line-height: 1.6;
+                                "
+                            >
+                                Creator of the
+                                <strong>Light Maintenance</strong> WordPress
+                                plugin — elegant, zero-bloat maintenance mode
+                                for any site.
+                            </p>
+                        </div>
+                        <div class="card">
+                            <div style="font-size: 1.6rem; margin-bottom: 8px">
+                                📚
+                            </div>
+                            <h4
+                                style="
+                                    font-size: 1rem;
+                                    font-weight: 700;
+                                    margin-bottom: 6px;
+                                "
+                            >
+                                LMS Specialist
+                            </h4>
+                            <p
+                                style="
+                                    font-size: 0.9rem;
+                                    color: var(--muted);
+                                    line-height: 1.6;
+                                "
+                            >
+                                Deep experience building and troubleshooting
+                                complex learning management systems for global
+                                clients.
+                            </p>
+                        </div>
+                        <div class="card">
+                            <div style="font-size: 1.6rem; margin-bottom: 8px">
+                                ✍️
+                            </div>
+                            <h4
+                                style="
+                                    font-size: 1rem;
+                                    font-weight: 700;
+                                    margin-bottom: 6px;
+                                "
+                            >
+                                Technical Writer
+                            </h4>
+                            <p
+                                style="
+                                    font-size: 0.9rem;
+                                    color: var(--muted);
+                                    line-height: 1.6;
+                                "
+                            >
+                                Publishing practical WordPress & LMS articles on
+                                <a
+                                    href="https://dev.to/sakibnazmush"
+                                    target="_blank"
+                                    style="color: var(--teal-d)"
+                                    >dev.to</a
+                                >
+                                to help developers tackle real challenges.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================================================
+     SKILLS SECTION
+     ✏️ EDIT: Skills and their percentages (1-100)
+==================================================== -->
+        <section id="skills">
+            <div class="container">
+                <div class="reveal">
+                    <span class="section-label">Skills & Expertise</span>
+                    <h2 class="section-title">My Technical Arsenal</h2>
+                    <div class="section-divider"></div>
+                </div>
+
+                <div
+                    style="
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 48px;
+                    "
+                    class="skills-grid reveal"
+                >
+                    <!-- Left column -->
+                    <div>
+                        <h3
+                            style="
+                                font-size: 1.1rem;
+                                font-weight: 600;
+                                margin-bottom: 24px;
+                                color: var(--teal-d);
+                            "
+                        >
+                            Core Technical Skills
+                        </h3>
+                        <!-- ✏️ EDIT: Add/remove skill items. data-level sets bar width % -->
+                        <div
+                            style="
+                                display: flex;
+                                flex-direction: column;
+                                gap: 20px;
+                            "
+                        >
+                            <div class="skill-item">
+                                <div
+                                    style="
+                                        display: flex;
+                                        justify-content: space-between;
+                                        margin-bottom: 8px;
+                                    "
+                                >
+                                    <span
+                                        style="
+                                            font-weight: 600;
+                                            font-size: 0.9rem;
+                                        "
+                                        >WordPress Development</span
+                                    >
+                                    <span
+                                        style="
+                                            font-size: 0.85rem;
+                                            color: var(--teal-d);
+                                        "
+                                        >95%</span
+                                    >
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div
+                                        class="skill-bar-fill"
+                                        data-level="95"
+                                    ></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div
+                                    style="
+                                        display: flex;
+                                        justify-content: space-between;
+                                        margin-bottom: 8px;
+                                    "
+                                >
+                                    <span
+                                        style="
+                                            font-weight: 600;
+                                            font-size: 0.9rem;
+                                        "
+                                        >LMS Platforms (LearnDash, LifterLMS,
+                                        Tutor LMS)</span
+                                    >
+                                    <span
+                                        style="
+                                            font-size: 0.85rem;
+                                            color: var(--teal-d);
+                                        "
+                                        >90%</span
+                                    >
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div
+                                        class="skill-bar-fill"
+                                        data-level="90"
+                                    ></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div
+                                    style="
+                                        display: flex;
+                                        justify-content: space-between;
+                                        margin-bottom: 8px;
+                                    "
+                                >
+                                    <span
+                                        style="
+                                            font-weight: 600;
+                                            font-size: 0.9rem;
+                                        "
+                                        >PHP & Plugin Development</span
+                                    >
+                                    <span
+                                        style="
+                                            font-size: 0.85rem;
+                                            color: var(--teal-d);
+                                        "
+                                        >80%</span
+                                    >
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div
+                                        class="skill-bar-fill"
+                                        data-level="80"
+                                    ></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div
+                                    style="
+                                        display: flex;
+                                        justify-content: space-between;
+                                        margin-bottom: 8px;
+                                    "
+                                >
+                                    <span
+                                        style="
+                                            font-weight: 600;
+                                            font-size: 0.9rem;
+                                        "
+                                        >HTML / CSS / JavaScript</span
+                                    >
+                                    <span
+                                        style="
+                                            font-size: 0.85rem;
+                                            color: var(--teal-d);
+                                        "
+                                        >85%</span
+                                    >
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div
+                                        class="skill-bar-fill"
+                                        data-level="85"
+                                    ></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div
+                                    style="
+                                        display: flex;
+                                        justify-content: space-between;
+                                        margin-bottom: 8px;
+                                    "
+                                >
+                                    <span
+                                        style="
+                                            font-weight: 600;
+                                            font-size: 0.9rem;
+                                        "
+                                        >MySQL / Database Management</span
+                                    >
+                                    <span
+                                        style="
+                                            font-size: 0.85rem;
+                                            color: var(--teal-d);
+                                        "
+                                        >75%</span
+                                    >
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div
+                                        class="skill-bar-fill"
+                                        data-level="75"
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right column -->
+                    <div>
+                        <h3
+                            style="
+                                font-size: 1.1rem;
+                                font-weight: 600;
+                                margin-bottom: 24px;
+                                color: var(--teal-d);
+                            "
+                        >
+                            Support & Tools
+                        </h3>
+                        <div
+                            style="
+                                display: flex;
+                                flex-direction: column;
+                                gap: 20px;
+                            "
+                        >
+                            <!-- ✏️ EDIT: Support skills -->
+                            <div class="skill-item">
+                                <div
+                                    style="
+                                        display: flex;
+                                        justify-content: space-between;
+                                        margin-bottom: 8px;
+                                    "
+                                >
+                                    <span
+                                        style="
+                                            font-weight: 600;
+                                            font-size: 0.9rem;
+                                        "
+                                        >Technical Support & Ticketing</span
+                                    >
+                                    <span
+                                        style="
+                                            font-size: 0.85rem;
+                                            color: var(--teal-d);
+                                        "
+                                        >98%</span
+                                    >
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div
+                                        class="skill-bar-fill"
+                                        data-level="98"
+                                    ></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div
+                                    style="
+                                        display: flex;
+                                        justify-content: space-between;
+                                        margin-bottom: 8px;
+                                    "
+                                >
+                                    <span
+                                        style="
+                                            font-weight: 600;
+                                            font-size: 0.9rem;
+                                        "
+                                        >WooCommerce</span
+                                    >
+                                    <span
+                                        style="
+                                            font-size: 0.85rem;
+                                            color: var(--teal-d);
+                                        "
+                                        >82%</span
+                                    >
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div
+                                        class="skill-bar-fill"
+                                        data-level="82"
+                                    ></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div
+                                    style="
+                                        display: flex;
+                                        justify-content: space-between;
+                                        margin-bottom: 8px;
+                                    "
+                                >
+                                    <span
+                                        style="
+                                            font-weight: 600;
+                                            font-size: 0.9rem;
+                                        "
+                                        >Git / Version Control</span
+                                    >
+                                    <span
+                                        style="
+                                            font-size: 0.85rem;
+                                            color: var(--teal-d);
+                                        "
+                                        >78%</span
+                                    >
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div
+                                        class="skill-bar-fill"
+                                        data-level="78"
+                                    ></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div
+                                    style="
+                                        display: flex;
+                                        justify-content: space-between;
+                                        margin-bottom: 8px;
+                                    "
+                                >
+                                    <span
+                                        style="
+                                            font-weight: 600;
+                                            font-size: 0.9rem;
+                                        "
+                                        >cPanel / Hosting & Deployment</span
+                                    >
+                                    <span
+                                        style="
+                                            font-size: 0.85rem;
+                                            color: var(--teal-d);
+                                        "
+                                        >85%</span
+                                    >
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div
+                                        class="skill-bar-fill"
+                                        data-level="85"
+                                    ></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div
+                                    style="
+                                        display: flex;
+                                        justify-content: space-between;
+                                        margin-bottom: 8px;
+                                    "
+                                >
+                                    <span
+                                        style="
+                                            font-weight: 600;
+                                            font-size: 0.9rem;
+                                        "
+                                        >Elementor / Page Builders</span
+                                    >
+                                    <span
+                                        style="
+                                            font-size: 0.85rem;
+                                            color: var(--teal-d);
+                                        "
+                                        >88%</span
+                                    >
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div
+                                        class="skill-bar-fill"
+                                        data-level="88"
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tech Tags -->
+                <div
+                    style="margin-top: 56px; text-align: center"
+                    class="reveal"
+                >
+                    <h3
+                        style="
+                            font-size: 1.1rem;
+                            font-weight: 600;
+                            color: var(--muted);
+                            margin-bottom: 20px;
+                        "
+                    >
+                        Technologies & Tools I Work With
+                    </h3>
+                    <!-- ✏️ EDIT: Add or remove tags -->
+                    <div
+                        style="
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 10px;
+                            justify-content: center;
+                        "
+                    >
+                        <span class="tech-tag">WordPress</span>
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">LearnDash</span>
+                        <span class="tech-tag">LifterLMS</span>
+                        <span class="tech-tag">Tutor LMS</span>
+                        <span class="tech-tag">WooCommerce</span>
+                        <span class="tech-tag">Elementor</span>
+                        <span class="tech-tag">Divi</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">REST API</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">Git</span>
+                        <span class="tech-tag">GitHub</span>
+                        <span class="tech-tag">cPanel</span>
+                        <span class="tech-tag">Freshdesk</span>
+                        <span class="tech-tag">Helpscout</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================================================
+     EXPERIENCE SECTION
+     ✏️ EDIT: Job entries, dates, achievements
+==================================================== -->
+        <section id="experience">
+            <div class="container">
+                <div class="reveal">
+                    <span class="section-label">Experience</span>
+                    <h2 class="section-title">
+                        Where I've Made<br />an Impact
+                    </h2>
+                    <div class="section-divider"></div>
+                </div>
+
+                <div
+                    style="
+                        position: relative;
+                        padding-left: 72px;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 40px;
+                    "
+                    class="reveal"
+                >
+                    <!-- Timeline vertical line -->
+                    <div class="timeline-line"></div>
+
+                    <!-- ✏️ EDIT: Experience Entry 1 -->
+                    <div style="position: relative">
+                        <div
+                            class="timeline-dot"
+                            style="position: absolute; left: -72px; top: 0"
+                        >
+                            💼
+                        </div>
+                        <div class="card">
+                            <div
+                                style="
+                                    display: flex;
+                                    justify-content: space-between;
+                                    flex-wrap: wrap;
+                                    gap: 8px;
+                                    margin-bottom: 12px;
+                                "
+                            >
+                                <div>
+                                    <!-- ✏️ EDIT: Job title -->
+                                    <h3
+                                        style="
+                                            font-size: 1.25rem;
+                                            font-weight: 700;
+                                            color: var(--navy);
+                                        "
+                                    >
+                                        Technical Support Engineer
+                                    </h3>
+                                    <!-- ✏️ EDIT: Company name -->
+                                    <p
+                                        style="
+                                            color: var(--teal-d);
+                                            font-weight: 600;
+                                            font-size: 0.95rem;
+                                            margin-top: 2px;
+                                        "
+                                    >
+                                        Zepto Apps
+                                    </p>
+                                </div>
+                                <!-- ✏️ EDIT: Date range -->
+                                <div
+                                    style="
+                                        background: rgba(126, 172, 181, 0.12);
+                                        border: 1px solid
+                                            rgba(126, 172, 181, 0.35);
+                                        padding: 4px 14px;
+                                        border-radius: 50px;
+                                        font-size: 0.8rem;
+                                        font-weight: 600;
+                                        color: var(--teal-d);
+                                        height: fit-content;
+                                    "
+                                >
+                                    2022 — Present
+                                </div>
+                            </div>
+                            <p
+                                style="
+                                    color: var(--muted);
+                                    font-size: 0.9rem;
+                                    margin-bottom: 16px;
+                                    line-height: 1.7;
+                                "
+                            >
+                                <!-- ✏️ EDIT: Job description -->
+                                Providing premium technical support for Zepto
+                                Apps' suite of WordPress & LMS plugins.
+                                Responsible for diagnosing complex plugin
+                                conflicts, guiding clients through LMS setup and
+                                customization, and contributing to product
+                                documentation.
+                            </p>
+                            <!-- ✏️ EDIT: Key achievements -->
+                            <ul
+                                style="
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: 10px;
+                                    list-style: none;
+                                "
+                            >
+                                <li
+                                    style="
+                                        display: flex;
+                                        gap: 10px;
+                                        align-items: flex-start;
+                                    "
+                                >
+                                    <span
+                                        style="
+                                            color: var(--honey);
+                                            margin-top: 3px;
+                                            font-size: 0.8rem;
+                                        "
+                                        >▸</span
+                                    >
+                                    <span
+                                        style="
+                                            font-size: 0.9rem;
+                                            color: #2d3a4a;
+                                        "
+                                        >Handling
+                                        <strong
+                                            >130–140 support tickets per
+                                            week</strong
+                                        >
+                                        across email, live chat, and ticketing
+                                        platforms with consistent quality.</span
+                                    >
+                                </li>
+                                <li
+                                    style="
+                                        display: flex;
+                                        gap: 10px;
+                                        align-items: flex-start;
+                                    "
+                                >
+                                    <span
+                                        style="
+                                            color: var(--honey);
+                                            margin-top: 3px;
+                                            font-size: 0.8rem;
+                                        "
+                                        >▸</span
+                                    >
+                                    <span
+                                        style="
+                                            font-size: 0.9rem;
+                                            color: #2d3a4a;
+                                        "
+                                        >Maintained a
+                                        <strong
+                                            >4.9★ customer satisfaction
+                                            rating</strong
+                                        >
+                                        across thousands of resolved
+                                        tickets.</span
+                                    >
+                                </li>
+                                <li
+                                    style="
+                                        display: flex;
+                                        gap: 10px;
+                                        align-items: flex-start;
+                                    "
+                                >
+                                    <span
+                                        style="
+                                            color: var(--honey);
+                                            margin-top: 3px;
+                                            font-size: 0.8rem;
+                                        "
+                                        >▸</span
+                                    >
+                                    <span
+                                        style="
+                                            font-size: 0.9rem;
+                                            color: #2d3a4a;
+                                        "
+                                        >Deep expertise in LMS configuration —
+                                        course management, quiz logic, payment
+                                        gateways, and membership
+                                        integrations.</span
+                                    >
+                                </li>
+                                <li
+                                    style="
+                                        display: flex;
+                                        gap: 10px;
+                                        align-items: flex-start;
+                                    "
+                                >
+                                    <span
+                                        style="
+                                            color: var(--honey);
+                                            margin-top: 3px;
+                                            font-size: 0.8rem;
+                                        "
+                                        >▸</span
+                                    >
+                                    <span
+                                        style="
+                                            font-size: 0.9rem;
+                                            color: #2d3a4a;
+                                        "
+                                        >Authored detailed knowledge-base
+                                        articles and video walkthroughs to
+                                        reduce repetitive support burden.</span
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- ✏️ EDIT: Experience Entry 2 -->
+                    <div style="position: relative">
+                        <div
+                            class="timeline-dot"
+                            style="position: absolute; left: -72px; top: 0"
+                        >
+                            🔧
+                        </div>
+                        <div class="card">
+                            <div
+                                style="
+                                    display: flex;
+                                    justify-content: space-between;
+                                    flex-wrap: wrap;
+                                    gap: 8px;
+                                    margin-bottom: 12px;
+                                "
+                            >
+                                <div>
+                                    <h3
+                                        style="
+                                            font-size: 1.25rem;
+                                            font-weight: 700;
+                                            color: var(--navy);
+                                        "
+                                    >
+                                        WordPress & LMS Developer
+                                    </h3>
+                                    <p
+                                        style="
+                                            color: var(--teal-d);
+                                            font-weight: 600;
+                                            font-size: 0.95rem;
+                                            margin-top: 2px;
+                                        "
+                                    >
+                                        Freelance / Independent Projects
+                                    </p>
+                                </div>
+                                <div
+                                    style="
+                                        background: rgba(126, 172, 181, 0.12);
+                                        border: 1px solid
+                                            rgba(126, 172, 181, 0.35);
+                                        padding: 4px 14px;
+                                        border-radius: 50px;
+                                        font-size: 0.8rem;
+                                        font-weight: 600;
+                                        color: var(--teal-d);
+                                        height: fit-content;
+                                    "
+                                >
+                                    2020 — Present
+                                </div>
+                            </div>
+                            <p
+                                style="
+                                    color: var(--muted);
+                                    font-size: 0.9rem;
+                                    margin-bottom: 16px;
+                                    line-height: 1.7;
+                                "
+                            >
+                                Building custom WordPress sites, developing LMS
+                                ecosystems, and creating bespoke plugins for
+                                clients across education, e-commerce, and SaaS
+                                industries.
+                            </p>
+                            <ul
+                                style="
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: 10px;
+                                    list-style: none;
+                                "
+                            >
+                                <li
+                                    style="
+                                        display: flex;
+                                        gap: 10px;
+                                        align-items: flex-start;
+                                    "
+                                >
+                                    <span
+                                        style="
+                                            color: var(--honey);
+                                            margin-top: 3px;
+                                            font-size: 0.8rem;
+                                        "
+                                        >▸</span
+                                    >
+                                    <span
+                                        style="
+                                            font-size: 0.9rem;
+                                            color: #2d3a4a;
+                                        "
+                                        >Developed and published the
+                                        <strong>Light Maintenance</strong>
+                                        WordPress plugin for elegant site
+                                        maintenance mode management.</span
+                                    >
+                                </li>
+                                <li
+                                    style="
+                                        display: flex;
+                                        gap: 10px;
+                                        align-items: flex-start;
+                                    "
+                                >
+                                    <span
+                                        style="
+                                            color: var(--honey);
+                                            margin-top: 3px;
+                                            font-size: 0.8rem;
+                                        "
+                                        >▸</span
+                                    >
+                                    <span
+                                        style="
+                                            font-size: 0.9rem;
+                                            color: #2d3a4a;
+                                        "
+                                        >Designed and deployed full LMS
+                                        platforms using LearnDash and LifterLMS
+                                        for international e-learning
+                                        clients.</span
+                                    >
+                                </li>
+                                <li
+                                    style="
+                                        display: flex;
+                                        gap: 10px;
+                                        align-items: flex-start;
+                                    "
+                                >
+                                    <span
+                                        style="
+                                            color: var(--honey);
+                                            margin-top: 3px;
+                                            font-size: 0.8rem;
+                                        "
+                                        >▸</span
+                                    >
+                                    <span
+                                        style="
+                                            font-size: 0.9rem;
+                                            color: #2d3a4a;
+                                        "
+                                        >Integrated WooCommerce memberships,
+                                        payment gateways, and subscription
+                                        models into complex LMS platforms.</span
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================================================
+     PROJECTS SECTION
+     ✏️ EDIT: Project cards — title, description, tech, links
+==================================================== -->
+        <section id="projects">
+            <div class="container">
+                <div class="reveal">
+                    <span class="section-label">Projects</span>
+                    <h2 class="section-title">Things I've Built</h2>
+                    <div class="section-divider"></div>
+                </div>
+
+                <div
+                    style="
+                        display: grid;
+                        grid-template-columns: repeat(
+                            auto-fit,
+                            minmax(300px, 1fr)
+                        );
+                        gap: 28px;
+                    "
+                    class="reveal"
+                >
+                    <!-- ✏️ EDIT: Project 1 -->
+                    <div class="project-card">
+                        <div class="project-card-top"></div>
+                        <div style="padding: 28px">
+                            <div
+                                style="
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: flex-start;
+                                    margin-bottom: 16px;
+                                "
+                            >
+                                <div style="font-size: 2rem">🔧</div>
+                                <!-- ✏️ EDIT: Project links (GitHub / Live demo) -->
+                                <div style="display: flex; gap: 10px">
+                                    <a
+                                        href="https://wordpress.org/plugins/light-maintenance/"
+                                        target="_blank"
+                                        title="Live Site"
+                                        style="
+                                            width: 36px;
+                                            height: 36px;
+                                            border-radius: 50%;
+                                            background: rgba(
+                                                126,
+                                                172,
+                                                181,
+                                                0.12
+                                            );
+                                            border: 1px solid
+                                                rgba(126, 172, 181, 0.35);
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            text-decoration: none;
+                                            font-size: 0.9rem;
+                                            transition: all 0.2s;
+                                        "
+                                        onmouseover="
+                                            this.style.background =
+                                                'rgba(126,172,181,0.3)'
+                                        "
+                                        onmouseout="
+                                            this.style.background =
+                                                'rgba(126,172,181,0.12)'
+                                        "
+                                        >↗</a
+                                    >
+                                </div>
+                            </div>
+                            <!-- ✏️ EDIT: Project title -->
+                            <h3
+                                style="
+                                    font-size: 1.15rem;
+                                    font-weight: 700;
+                                    margin-bottom: 10px;
+                                "
+                            >
+                                Light Maintenance Plugin
+                            </h3>
+                            <!-- ✏️ EDIT: Project description -->
+                            <p
+                                style="
+                                    font-size: 0.9rem;
+                                    color: var(--muted);
+                                    line-height: 1.7;
+                                    margin-bottom: 20px;
+                                "
+                            >
+                                A lightweight, zero-bloat WordPress plugin for
+                                putting your website into maintenance mode.
+                                Features a beautiful, customizable maintenance
+                                page with no performance overhead.
+                            </p>
+                            <!-- ✏️ EDIT: Technologies used -->
+                            <div
+                                style="display: flex; flex-wrap: wrap; gap: 8px"
+                            >
+                                <span class="tech-tag">PHP</span>
+                                <span class="tech-tag">WordPress</span>
+                                <span class="tech-tag">CSS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ✏️ EDIT: Project 2 -->
+                    <div class="project-card">
+                        <div class="project-card-top"></div>
+                        <div style="padding: 28px">
+                            <div
+                                style="
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: flex-start;
+                                    margin-bottom: 16px;
+                                "
+                            >
+                                <div style="font-size: 2rem">📚</div>
+                                <div style="display: flex; gap: 10px">
+                                    <!-- ✏️ EDIT: Add GitHub/live URL -->
+                                    <a
+                                        href="#"
+                                        title="GitHub"
+                                        style="
+                                            width: 36px;
+                                            height: 36px;
+                                            border-radius: 50%;
+                                            background: rgba(
+                                                126,
+                                                172,
+                                                181,
+                                                0.12
+                                            );
+                                            border: 1px solid
+                                                rgba(126, 172, 181, 0.35);
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            text-decoration: none;
+                                            font-size: 0.9rem;
+                                            transition: all 0.2s;
+                                        "
+                                        onmouseover="
+                                            this.style.background =
+                                                'rgba(126,172,181,0.3)'
+                                        "
+                                        onmouseout="
+                                            this.style.background =
+                                                'rgba(126,172,181,0.12)'
+                                        "
+                                        >↗</a
+                                    >
+                                </div>
+                            </div>
+                            <h3
+                                style="
+                                    font-size: 1.15rem;
+                                    font-weight: 700;
+                                    margin-bottom: 10px;
+                                "
+                            >
+                                Custom LMS Platform
+                            </h3>
+                            <p
+                                style="
+                                    font-size: 0.9rem;
+                                    color: var(--muted);
+                                    line-height: 1.7;
+                                    margin-bottom: 20px;
+                                "
+                            >
+                                End-to-end LMS build for an international
+                                e-learning provider — featuring course
+                                management, quiz systems, certificates,
+                                membership access levels, and payment
+                                integration.
+                            </p>
+                            <div
+                                style="display: flex; flex-wrap: wrap; gap: 8px"
+                            >
+                                <span class="tech-tag">LearnDash</span>
+                                <span class="tech-tag">WordPress</span>
+                                <span class="tech-tag">WooCommerce</span>
+                                <span class="tech-tag">PHP</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ✏️ EDIT: Project 3 -->
+                    <div class="project-card">
+                        <div class="project-card-top"></div>
+                        <div style="padding: 28px">
+                            <div
+                                style="
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: flex-start;
+                                    margin-bottom: 16px;
+                                "
+                            >
+                                <div style="font-size: 2rem">✍️</div>
+                                <div style="display: flex; gap: 10px">
+                                    <a
+                                        href="https://dev.to/sakibnazmush"
+                                        target="_blank"
+                                        title="dev.to Profile"
+                                        style="
+                                            width: 36px;
+                                            height: 36px;
+                                            border-radius: 50%;
+                                            background: rgba(
+                                                126,
+                                                172,
+                                                181,
+                                                0.12
+                                            );
+                                            border: 1px solid
+                                                rgba(126, 172, 181, 0.35);
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            text-decoration: none;
+                                            font-size: 0.9rem;
+                                            transition: all 0.2s;
+                                        "
+                                        onmouseover="
+                                            this.style.background =
+                                                'rgba(126,172,181,0.3)'
+                                        "
+                                        onmouseout="
+                                            this.style.background =
+                                                'rgba(126,172,181,0.12)'
+                                        "
+                                        >↗</a
+                                    >
+                                </div>
+                            </div>
+                            <h3
+                                style="
+                                    font-size: 1.15rem;
+                                    font-weight: 700;
+                                    margin-bottom: 10px;
+                                "
+                            >
+                                Technical Blog on dev.to
+                            </h3>
+                            <p
+                                style="
+                                    font-size: 0.9rem;
+                                    color: var(--muted);
+                                    line-height: 1.7;
+                                    margin-bottom: 20px;
+                                "
+                            >
+                                Sharing practical knowledge on WordPress
+                                development, LMS configuration, plugin building,
+                                and technical support best practices with the
+                                broader developer community.
+                            </p>
+                            <div
+                                style="display: flex; flex-wrap: wrap; gap: 8px"
+                            >
+                                <span class="tech-tag">WordPress</span>
+                                <span class="tech-tag">LMS</span>
+                                <span class="tech-tag">Technical Writing</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ✏️ EDIT: Project 4 (add more or delete) -->
+                    <div class="project-card">
+                        <div class="project-card-top"></div>
+                        <div style="padding: 28px">
+                            <div
+                                style="
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: flex-start;
+                                    margin-bottom: 16px;
+                                "
+                            >
+                                <div style="font-size: 2rem">🛒</div>
+                                <div style="display: flex; gap: 10px">
+                                    <a
+                                        href="#"
+                                        title="Project Link"
+                                        style="
+                                            width: 36px;
+                                            height: 36px;
+                                            border-radius: 50%;
+                                            background: rgba(
+                                                126,
+                                                172,
+                                                181,
+                                                0.12
+                                            );
+                                            border: 1px solid
+                                                rgba(126, 172, 181, 0.35);
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            text-decoration: none;
+                                            font-size: 0.9rem;
+                                            transition: all 0.2s;
+                                        "
+                                        onmouseover="
+                                            this.style.background =
+                                                'rgba(126,172,181,0.3)'
+                                        "
+                                        onmouseout="
+                                            this.style.background =
+                                                'rgba(126,172,181,0.12)'
+                                        "
+                                        >↗</a
+                                    >
+                                </div>
+                            </div>
+                            <h3
+                                style="
+                                    font-size: 1.15rem;
+                                    font-weight: 700;
+                                    margin-bottom: 10px;
+                                "
+                            >
+                                WooCommerce Membership Site
+                            </h3>
+                            <p
+                                style="
+                                    font-size: 0.9rem;
+                                    color: var(--muted);
+                                    line-height: 1.7;
+                                    margin-bottom: 20px;
+                                "
+                            >
+                                Full-featured membership website integrating
+                                WooCommerce Subscriptions, gated content access,
+                                LMS courses, and automated email onboarding
+                                flows for a SaaS company.
+                            </p>
+                            <div
+                                style="display: flex; flex-wrap: wrap; gap: 8px"
+                            >
+                                <span class="tech-tag">WooCommerce</span>
+                                <span class="tech-tag">WordPress</span>
+                                <span class="tech-tag">LifterLMS</span>
+                                <span class="tech-tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- dev.to CTA -->
+                <div
+                    style="margin-top: 40px; text-align: center"
+                    class="reveal"
+                >
+                    <a
+                        href="https://dev.to/sakibnazmush"
+                        target="_blank"
+                        class="btn-outline"
+                    >
+                        <span>📝</span> Read My Articles on dev.to
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================================================
+     CONTACT SECTION
+     ✏️ EDIT: Email, social links, location
+==================================================== -->
+        <section id="contact">
+            <div class="container">
+                <div
+                    class="reveal"
+                    style="text-align: center; margin-bottom: 48px"
+                >
+                    <span
+                        class="section-label"
+                        style="
+                            color: #c8e2e7;
+                            background: rgba(126, 172, 181, 0.15);
+                            border-color: rgba(126, 172, 181, 0.35);
+                        "
+                        >Contact</span
+                    >
+                    <div
+                        class="section-divider"
+                        style="margin: 16px auto 0"
+                    ></div>
+                    <p
+                        style="
+                            color: rgba(200, 226, 231, 0.8);
+                            margin-top: 24px;
+                            max-width: 500px;
+                            margin-left: auto;
+                            margin-right: auto;
+                            line-height: 1.7;
+                        "
+                    >
+                        <!-- ✏️ EDIT: Contact intro text -->
+                        Have a WordPress problem to solve, an LMS to build, or
+                        just want to say hi? I'm always open to new projects and
+                        conversations.
+                    </p>
+                </div>
+
+                <div
+                    style="
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 64px;
+                        align-items: start;
+                    "
+                    class="contact-grid reveal"
+                >
+                    <!-- Left: Contact info -->
+                    <div
+                        style="display: flex; flex-direction: column; gap: 24px"
+                    >
+                        <!-- ✏️ EDIT: Email -->
+                        <a
+                            href="mailto:sakibnazmush@gmail.com"
+                            class="contact-link"
+                        >
+                            <div class="contact-icon-box">📧</div>
+                            <div>
+                                <div
+                                    style="
+                                        font-size: 0.75rem;
+                                        color: rgba(200, 226, 231, 0.55);
+                                        margin-bottom: 2px;
+                                    "
+                                >
+                                    Email
+                                </div>
+                                <div style="font-weight: 600">
+                                    sakibnazmush@gmail.com
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- ✏️ EDIT: Location -->
+                        <div class="contact-link" style="cursor: default">
+                            <div class="contact-icon-box">📍</div>
+                            <div>
+                                <div
+                                    style="
+                                        font-size: 0.75rem;
+                                        color: rgba(200, 226, 231, 0.55);
+                                        margin-bottom: 2px;
+                                    "
+                                >
+                                    Location
+                                </div>
+                                <!-- ✏️ EDIT: Your location -->
+                                <div style="font-weight: 600">Bangladesh</div>
+                            </div>
+                        </div>
+
+                        <!-- ✏️ EDIT: dev.to profile -->
+                        <a
+                            href="https://dev.to/sakibnazmush"
+                            target="_blank"
+                            class="contact-link"
+                        >
+                            <div
+                                class="contact-icon-box"
+                                style="
+                                    font-size: 0.9rem;
+                                    font-weight: 800;
+                                    color: #c8e2e7;
+                                    font-family: monospace;
+                                "
+                            >
+                                {/}
+                            </div>
+                            <div>
+                                <div
+                                    style="
+                                        font-size: 0.75rem;
+                                        color: rgba(200, 226, 231, 0.55);
+                                        margin-bottom: 2px;
+                                    "
+                                >
+                                    dev.to Blog
+                                </div>
+                                <div style="font-weight: 600">
+                                    dev.to/sakibnazmush
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- ✏️ EDIT: GitHub (update URL) -->
+                        <a
+                            href="https://github.com/sakibnazmush"
+                            target="_blank"
+                            class="contact-link"
+                        >
+                            <div class="contact-icon-box">🐙</div>
+                            <div>
+                                <div
+                                    style="
+                                        font-size: 0.75rem;
+                                        color: rgba(200, 226, 231, 0.55);
+                                        margin-bottom: 2px;
+                                    "
+                                >
+                                    GitHub
+                                </div>
+                                <div style="font-weight: 600">
+                                    github.com/sakibnazmush
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- ✏️ EDIT: LinkedIn (update URL) -->
+                        <a
+                            href="https://linkedin.com/in/sakibnazmush"
+                            target="_blank"
+                            class="contact-link"
+                        >
+                            <div class="contact-icon-box">💼</div>
+                            <div>
+                                <div
+                                    style="
+                                        font-size: 0.75rem;
+                                        color: rgba(200, 226, 231, 0.55);
+                                        margin-bottom: 2px;
+                                    "
+                                >
+                                    LinkedIn
+                                </div>
+                                <div style="font-weight: 600">
+                                    linkedin.com/in/sakibnazmush
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Right: Contact form — powered by Formspree -->
+                    <!--
+        ✏️ HOW TO RECEIVE MESSAGES IN YOUR EMAIL:
+        1. Go to https://formspree.io and create a FREE account
+        2. Click "New Form" → name it anything → copy your Form ID (looks like: xpwzabcd)
+        3. Replace YOUR_FORMSPREE_ID below with your actual Form ID
+        4. That's it! Messages will arrive in your email inbox instantly.
+      -->
+                    <form
+                        id="contact-form"
+                        class="contact-form"
+                        style="display: flex; flex-direction: column; gap: 16px"
+                        onsubmit="handleFormSubmit(event)"
+                    >
+                        <div
+                            style="
+                                display: grid;
+                                grid-template-columns: 1fr 1fr;
+                                gap: 16px;
+                            "
+                        >
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Your Name"
+                                required
+                            />
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Your Email"
+                                required
+                            />
+                        </div>
+                        <input
+                            type="text"
+                            name="subject"
+                            placeholder="Subject"
+                            required
+                        />
+                        <textarea
+                            name="message"
+                            rows="5"
+                            placeholder="Your message..."
+                            required
+                        ></textarea>
+
+                        <!-- Honeypot spam protection (hidden) -->
+                        <input
+                            type="text"
+                            name="_gotcha"
+                            style="display: none"
+                            tabindex="-1"
+                            autocomplete="off"
+                        />
+
+                        <button
+                            type="submit"
+                            class="btn-primary"
+                            id="submit-btn"
+                            style="align-self: flex-start"
+                        >
+                            <span id="btn-icon">📨</span>
+                            <span id="btn-text">Send Message</span>
+                        </button>
+
+                        <!-- Status messages -->
+                        <p
+                            id="form-success"
+                            style="
+                                display: none;
+                                color: #86efac;
+                                font-size: 0.9rem;
+                                padding: 12px 16px;
+                                background: rgba(134, 239, 172, 0.1);
+                                border: 1px solid rgba(134, 239, 172, 0.3);
+                                border-radius: 10px;
+                            "
+                        >
+                            ✓ Message sent! I'll get back to you soon.
+                        </p>
+                        <p
+                            id="form-error"
+                            style="
+                                display: none;
+                                color: #fca5a5;
+                                font-size: 0.9rem;
+                                padding: 12px 16px;
+                                background: rgba(252, 165, 165, 0.1);
+                                border: 1px solid rgba(252, 165, 165, 0.3);
+                                border-radius: 10px;
+                            "
+                        >
+                            ✗ Something went wrong. Please email me directly at
+                            <a
+                                href="mailto:sakibnazmush@gmail.com"
+                                style="color: #c8e2e7"
+                                >sakibnazmush@gmail.com</a
+                            >
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================================================
+     FOOTER
+     ✏️ EDIT: Footer text / links
+==================================================== -->
+        <footer>
+            <p>
+                <!-- ✏️ EDIT: Footer text -->
+                Crafted with ❤️ by
+                <strong style="color: #7eacb5">Sakib MD Nazmush</strong> ·
+                <a
+                    href="https://dev.to/sakibnazmush"
+                    target="_blank"
+                    style="color: #7eacb5; text-decoration: none"
+                    >dev.to</a
+                >
+                ·
+                <a
+                    href="https://github.com/sakibnazmush"
+                    target="_blank"
+                    style="color: #7eacb5; text-decoration: none"
+                    >GitHub</a
+                >
+            </p>
+        </footer>
+
+        <!-- ====================================================
+     JAVASCRIPT — Minimal, functional
+==================================================== -->
+        <script>
+            // ---- Navbar scroll effect ----
+            const navbar = document.getElementById("navbar");
+            window.addEventListener("scroll", () => {
+                navbar.classList.toggle("scrolled", window.scrollY > 50);
+            });
+
+            // ---- Mobile menu ----
+            const hamburger = document.getElementById("hamburger");
+            const mobileMenu = document.getElementById("mobile-menu");
+            hamburger.addEventListener("click", () => {
+                mobileMenu.classList.toggle("open");
+            });
+            function closeMobileMenu() {
+                mobileMenu.classList.remove("open");
+            }
+
+            // ---- Responsive: show hamburger on mobile ----
+            function checkMobile() {
+                const isMobile = window.innerWidth < 768;
+                hamburger.style.display = isMobile ? "flex" : "none";
+                document.querySelector(".hidden-mobile").style.display =
+                    isMobile ? "none" : "flex";
+                if (!isMobile) mobileMenu.classList.remove("open");
+            }
+            checkMobile();
+            window.addEventListener("resize", checkMobile);
+
+            // ---- Scroll reveal ----
+            const reveals = document.querySelectorAll(".reveal");
+            const revealObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            revealObserver.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.12 },
+            );
+            reveals.forEach((el) => revealObserver.observe(el));
+
+            // ---- Skill bar animation ----
+            const skillBars = document.querySelectorAll(".skill-bar-fill");
+            const barObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            const level = entry.target.dataset.level;
+                            entry.target.style.width = level + "%";
+                            barObserver.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.5 },
+            );
+            skillBars.forEach((bar) => barObserver.observe(bar));
+
+            // ---- Contact form — Formspree integration ----
+            // ✏️ EDIT: Replace 'YOUR_FORMSPREE_ID' with your real ID from formspree.io
+            // Example: if your Formspree URL is https://formspree.io/f/xpwzabcd
+            // then YOUR_FORMSPREE_ID = 'xpwzabcd'
+            const FORMSPREE_ID = "YOUR_FORMSPREE_ID";
+
+            async function handleFormSubmit(e) {
+                e.preventDefault();
+                const form = document.getElementById("contact-form");
+                const btn = document.getElementById("submit-btn");
+                const btnText = document.getElementById("btn-text");
+                const btnIcon = document.getElementById("btn-icon");
+                const success = document.getElementById("form-success");
+                const error = document.getElementById("form-error");
+
+                // Reset
+                success.style.display = "none";
+                error.style.display = "none";
+
+                // Loading state
+                btn.disabled = true;
+                btnIcon.textContent = "⏳";
+                btnText.textContent = "Sending...";
+
+                // If Formspree ID not set, show demo success
+                if (FORMSPREE_ID === "YOUR_FORMSPREE_ID") {
+                    await new Promise((r) => setTimeout(r, 1000));
+                    success.textContent =
+                        "✓ [Demo] Message would be sent! Set your Formspree ID to activate.";
+                    success.style.display = "block";
+                    btn.disabled = false;
+                    btnIcon.textContent = "📨";
+                    btnText.textContent = "Send Message";
+                    form.reset();
+                    return;
+                }
+
+                try {
+                    const data = new FormData(form);
+                    const res = await fetch(
+                        `https://formspree.io/f/${FORMSPREE_ID}`,
+                        {
+                            method: "POST",
+                            body: data,
+                            headers: { Accept: "application/json" },
+                        },
+                    );
+
+                    if (res.ok) {
+                        success.style.display = "block";
+                        form.reset();
+                    } else {
+                        error.style.display = "block";
+                    }
+                } catch (err) {
+                    error.style.display = "block";
+                } finally {
+                    btn.disabled = false;
+                    btnIcon.textContent = "📨";
+                    btnText.textContent = "Send Message";
+                }
+            }
+
+            // ---- About grid responsive ----
+            function checkAboutGrid() {
+                const grid = document.querySelector(".about-grid");
+                const skillsGrid = document.querySelector(".skills-grid");
+                const contactGrid = document.querySelector(".contact-grid");
+                const isMobile = window.innerWidth < 768;
+                if (grid)
+                    grid.style.gridTemplateColumns = isMobile
+                        ? "1fr"
+                        : "1fr 1fr";
+                if (skillsGrid)
+                    skillsGrid.style.gridTemplateColumns = isMobile
+                        ? "1fr"
+                        : "1fr 1fr";
+                if (contactGrid)
+                    contactGrid.style.gridTemplateColumns = isMobile
+                        ? "1fr"
+                        : "1fr 1fr";
+            }
+            checkAboutGrid();
+            window.addEventListener("resize", checkAboutGrid);
+        </script>
+    </body>
+</html>
