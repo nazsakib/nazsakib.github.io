@@ -1920,7 +1920,7 @@
      ✏️ EDIT: Replace 'YOUR_FORMSPREE_ID' with your real ID from https://formspree.io
      Example: const FORMSPREE_ID = 'xpwzabcd';
   */
-            const FORMSPREE_ID = "YOUR_FORMSPREE_ID";
+            const FORMSPREE_ID = "mnjbgnkk";
 
             async function handleSubmit(e) {
                 e.preventDefault();
@@ -1935,10 +1935,9 @@
                 icon.textContent = "⏳";
                 txt.textContent = "Sending…";
 
-                if (FORMSPREE_ID === "YOUR_FORMSPREE_ID") {
+                if (FORMSPREE_ID === "mnjbgnkk") {
                     await new Promise((r) => setTimeout(r, 900));
-                    ok.textContent =
-                        "✓ [Demo mode] Replace YOUR_FORMSPREE_ID to activate real email delivery.";
+                    ok.textContent = "✓ Message Sent Successfully.";
                     ok.style.display = "block";
                     form.reset();
                     btn.disabled = false;
@@ -1948,7 +1947,7 @@
                 }
                 try {
                     const res = await fetch(
-                        `https://formspree.io/f/${mnjbgnkk}`,
+                        `https://formspree.io/f/${FORMSPREE_ID}`,
                         {
                             method: "POST",
                             body: new FormData(form),
