@@ -63,7 +63,7 @@ const projects = [
     desc: "Professional 1970s-style network surveillance system. Features a green phosphor CRT dashboard, Telegram bot command center, and automated speed diagnostics.",
     tags: ["Python", "Flask", "Systemd"],
     link: "https://masterdocu.vercel.app/docs/wifi-monitor",
-    img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop",
+    img: "/assets/projects/wifi-monitor.png",
   },
 ];
 
