@@ -26,7 +26,7 @@ const projects = [
     category: "AI-Powered PWA",
     desc: "AI-powered PWA for real-time conversion rate optimization audits. Integrates Google PageSpeed API and Firebase for store benchmarking.",
     tags: ["React", "Firebase", "Analytics"],
-    link: "https://github.com/nazsakib/shopify-cro",
+    link: "https://shopifyintel.vercel.app",
     img: "/assets/projects/shopify-cro.png",
   },
   {
