@@ -56,6 +56,15 @@ const projects = [
     link: "https://github.com/nazsakib/syncshell-dashboard",
     img: "https://res.cloudinary.com/dr1nwz8am/image/upload/v1773051436/synnshell_business_dashboard_by_sakibsnaz_pwnwbk.png",
   },
+  {
+    emoji: "📟",
+    title: "WiFi Monitor Mainframe",
+    category: "System Tool",
+    desc: "Professional 1970s-style network surveillance system. Features a green phosphor CRT dashboard, Telegram bot command center, and automated speed diagnostics.",
+    tags: ["Python", "Flask", "Systemd"],
+    link: "https://masterdocu.vercel.app/docs/wifi-monitor",
+    img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop",
+  },
 ];
 
 const Projects = () => {
