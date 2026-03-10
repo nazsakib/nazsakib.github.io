@@ -96,7 +96,7 @@ const Projects = () => {
               <div className="relative overflow-hidden border-b border-border">
                 <img
                   src={p.img}
-                  alt={p.title}
+                  alt={`${p.title} — Built by Sakib MD Nazmush (sakibsnaz) using ${p.tags.join(", ")}`}
                   className="w-full h-44 object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />

@@ -33,7 +33,7 @@ const Hero = () => {
             >
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               <span className="text-xs font-semibold tracking-widest uppercase text-teal-light">
-                Shopify, WordPress & Automation
+                WordPress, Shopify Designer & Automation Expert
               </span>
             </motion.div>
 
@@ -46,7 +46,7 @@ const Hero = () => {
             <p className="mt-5 text-base md:text-lg leading-relaxed text-primary-foreground/60 max-w-lg">
               Technical Support Engineer at{" "}
               <strong className="text-primary-foreground/90">Zepto Apps</strong>, managing 130+ tickets
-              per week with a 4.8★ merchant rating.
+              per week. Expert in store design and automation with n8n & Zapier.
             </p>
 
             <blockquote className="mt-6 pl-4 border-l-2 border-teal/40 italic text-primary-foreground/50 text-sm max-w-md">
@@ -118,7 +118,7 @@ const Hero = () => {
               <div className="relative w-full h-full p-1.5 rounded-full bg-gradient-to-tr from-primary/40 via-teal/20 to-transparent shadow-[0_0_50px_rgba(21,193,147,0.15)]">
                 <img
                   src="https://res.cloudinary.com/dr1nwz8am/image/upload/v1773056630/1000006476_ziyqmn.webp"
-                  alt="Sakib MD Nazmush"
+                  alt="Sakib MD Nazmush (sakibsnaz) — Technical Support Engineer and WordPress & Shopify Store Designer"
                   className="w-full h-full rounded-full object-cover border-2 border-white/10"
                 />
               </div>

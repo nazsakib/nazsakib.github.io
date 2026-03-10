@@ -45,7 +45,7 @@ const About = () => {
             className="space-y-4 text-[0.95rem] leading-relaxed text-muted-foreground"
           >
             <p>
-              I'm <strong className="text-foreground">Sakib MD Nazmush</strong>, a Technical Support Engineer. Currently at{" "}
+              I'm <strong className="text-foreground">Sakib MD Nazmush</strong> (also known as <strong className="text-foreground">sakibsnaz</strong>), a Technical Support Engineer and WordPress & Shopify Store Designer. Currently at{" "}
               <strong className="text-foreground">Zepto Apps</strong>, I support Shopify store owners by resolving complex
               technical issues for tools like the Zepto Product Personalizer, Sign Customizer and Boostly Cart.
             </p>
