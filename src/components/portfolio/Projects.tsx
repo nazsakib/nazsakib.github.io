@@ -17,7 +17,7 @@ const projects = [
     category: "Documentation Hub",
     desc: "Centralized engineering documentation hub. Features automated blueprint generation with Mermaid.js visualizations for complex system architectures.",
     tags: ["React", "TypeScript", "Mermaid.js"],
-    link: "https://github.com/nazsakib/masterdocu",
+    link: "https://masterdocu.vercel.app",
     img: "https://res.cloudinary.com/dr1nwz8am/image/upload/v1773051350/master_documentation_portal_by_sakibsnaz_wngmje.png",
   },
   {
