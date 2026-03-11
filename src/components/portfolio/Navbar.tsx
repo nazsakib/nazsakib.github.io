@@ -29,7 +29,7 @@ const Navbar = () => {
       className={`fixed inset-x-0 z-50 transition-all duration-500 mx-auto px-4 ${
         scrolled
           ? "top-4 max-w-[1100px] glass rounded-full shadow-lg"
-          : "top-0 max-w-[1100px] bg-transparent pt-4"
+          : "top-0 md:top-0 max-w-[1100px] bg-slate-dark/90 md:bg-transparent pt-4 md:rounded-none rounded-b-xl"
       }`}
     >
       <div className={`flex items-center justify-between px-6 py-4 md:px-8 transition-colors duration-500 ${
@@ -66,7 +66,9 @@ const Navbar = () => {
         {/* Mobile toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-2"
+          className={`md:hidden p-2 transition-colors ${
+            scrolled || mobileOpen ? "text-foreground" : "text-primary-foreground"
+          }`}
           aria-label="Menu"
         >
           {mobileOpen ? <X size={22} /> : <Menu size={22} />}
@@ -80,15 +82,15 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden overflow-hidden border-t border-border bg-card/95 backdrop-blur-xl rounded-b-2xl"
+            className="md:hidden overflow-hidden border-t border-border bg-card/95 backdrop-blur-xl rounded-b-2xl shadow-xl"
           >
-            <div className="flex flex-col gap-1 p-4">
+            <div className="flex flex-col gap-1 p-4 bg-slate-dark/95 backdrop-blur-xl">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="px-4 py-3 text-sm font-medium text-foreground hover:bg-secondary rounded-lg transition-colors"
+                  className="px-4 py-3 text-sm font-medium text-primary-foreground/90 hover:text-primary hover:bg-white/5 rounded-lg transition-colors"
                 >
                   {link.label}
                 </a>
@@ -98,7 +100,7 @@ const Navbar = () => {
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => setMobileOpen(false)}
-                className="mt-2 px-4 py-3 text-sm font-semibold bg-primary text-primary-foreground rounded-lg text-center"
+                className="mt-2 px-4 py-3 text-sm font-semibold bg-primary text-primary-foreground rounded-lg text-center hover:shadow-glow transition-all"
               >
                 Connect on LinkedIn
               </a>
