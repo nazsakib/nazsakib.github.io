@@ -15,6 +15,19 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace("#", "");
+    const elem = document.getElementById(targetId);
+    if (elem) {
+      elem.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      setMobileOpen(false);
+    }
+  };
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
@@ -28,7 +41,7 @@ const Navbar = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed inset-x-0 z-50 transition-all duration-500 mx-auto px-4 ${
         scrolled
-          ? "top-4 max-w-[1100px] glass rounded-full shadow-lg"
+          ? "top-0 md:top-4 max-w-[1100px] glass rounded-none md:rounded-full shadow-lg"
           : "top-0 md:top-0 max-w-[1100px] bg-slate-dark/90 md:bg-transparent pt-4 md:rounded-none rounded-b-xl"
       }`}
     >
@@ -45,6 +58,7 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
+              onClick={(e) => scrollToSection(e, link.href)}
               className={`text-sm font-medium transition-colors relative group ${
                 scrolled ? "text-muted-foreground hover:text-primary" : "text-primary-foreground/70 hover:text-primary-foreground"
               }`}
@@ -89,7 +103,7 @@ const Navbar = () => {
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={(e) => scrollToSection(e, link.href)}
                   className="px-4 py-3 text-sm font-medium text-primary-foreground/90 hover:text-primary hover:bg-white/5 rounded-lg transition-colors"
                 >
                   {link.label}

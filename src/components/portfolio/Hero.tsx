@@ -107,12 +107,12 @@ const Hero = () => {
             className="relative flex-shrink-0"
           >
             <div className="w-60 h-64 sm:w-72 sm:h-72 lg:w-[360px] lg:h-[360px] relative">
-              {/* Outer Decorative Rings */}
-              <div className="absolute inset-[-20px] rounded-full border border-teal/10 animate-[spin_40s_linear_infinite]" />
-              <div className="absolute inset-[-12px] rounded-full border border-dashed border-teal/30 animate-[spin_25s_linear_infinite_reverse]" />
+              {/* Outer Decorative Rings - Hidden on Mobile */}
+              <div className="hidden md:block absolute inset-[-20px] rounded-full border border-teal/10 animate-[spin_40s_linear_infinite]" />
+              <div className="hidden md:block absolute inset-[-12px] rounded-full border border-dashed border-teal/30 animate-[spin_25s_linear_infinite_reverse]" />
               
-              {/* Main Glow */}
-              <div className="absolute inset-0 rounded-full bg-primary/20 blur-2xl animate-pulse" />
+              {/* Main Glow - Hidden on Mobile */}
+              <div className="hidden md:block absolute inset-0 rounded-full bg-primary/20 blur-2xl animate-pulse" />
               
               {/* Image Container with Custom Frame */}
               <div className="relative w-full h-full p-1.5 rounded-full bg-gradient-to-tr from-primary/40 via-teal/20 to-transparent shadow-[0_0_50px_rgba(21,193,147,0.15)]">
