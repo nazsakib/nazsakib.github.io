@@ -15,6 +15,20 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const handleMobileNav = (href: string) => {
+    // 1. Close the menu first (with a tiny delay if needed, but let's try direct)
+    setMobileOpen(false);
+    
+    // 2. Use a timeout to allow the menu to start closing before jumping
+    setTimeout(() => {
+      const id = href.replace("#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  };
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
@@ -86,14 +100,13 @@ const Navbar = () => {
           >
             <div className="flex flex-col gap-1 p-4 bg-slate-dark/95 backdrop-blur-xl">
               {navLinks.map((link) => (
-                <a
+                <button
                   key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="px-4 py-3 text-sm font-medium text-primary-foreground/90 hover:text-primary hover:bg-white/5 rounded-lg transition-colors"
+                  onClick={() => handleMobileNav(link.href)}
+                  className="px-4 py-3 text-sm font-medium text-left text-primary-foreground/90 hover:text-primary hover:bg-white/5 rounded-lg transition-colors cursor-pointer"
                 >
                   {link.label}
-                </a>
+                </button>
               ))}
               <a
                 href="https://www.linkedin.com/in/sakibsnaz/"
