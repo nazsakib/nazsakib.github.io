@@ -35,8 +35,8 @@ const Experience = () => {
     <section id="experience" className="py-24 bg-secondary">
       <div className="container">
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
@@ -53,8 +53,8 @@ const Experience = () => {
           {jobs.map((job, i) => (
             <motion.div
               key={job.title}
-              initial={{ opacity: 0, x: -40, filter: "blur(8px)" }}
-              whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15, duration: 0.5, ease: "easeOut" }}
               className="relative"

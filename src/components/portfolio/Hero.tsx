@@ -19,15 +19,15 @@ const Hero = () => {
         <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12 md:gap-16">
           {/* Text */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="flex-1 text-center md:text-left"
           >
             {/* Badge */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-teal/20 bg-teal/10 mb-6"
             >
@@ -55,8 +55,8 @@ const Hero = () => {
 
             {/* CTAs */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
               className="flex flex-wrap gap-3 mt-8 justify-center md:justify-start"
             >
@@ -80,8 +80,8 @@ const Hero = () => {
 
             {/* Stats */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.5, ease: "easeOut" }}
               className="flex mt-10 justify-center md:justify-start"
             >
@@ -101,8 +101,8 @@ const Hero = () => {
 
           {/* Image */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
             className="relative flex-shrink-0"
           >
