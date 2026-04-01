@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import OptimizedImage from "@/components/ui/OptimizedImage";
 
 const projects = [
   {
@@ -94,11 +95,10 @@ const Projects = () => {
             >
               {/* Image */}
               <div className="relative overflow-hidden border-b border-border">
-                <img
+                <OptimizedImage
                   src={p.img}
                   alt={`${p.title} — Built by Sakib MD Nazmush (sakibsnaz) using ${p.tags.join(", ")}`}
                   className="w-full h-44 object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-card/20" />
               </div>
