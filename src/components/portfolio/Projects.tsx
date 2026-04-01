@@ -44,8 +44,8 @@ const projects = [
     category: "WordPress Plugin",
     desc: "Professional performance tool that surgically disables unnecessary scripts and styles per-page with real-time frontend asset scanner.",
     tags: ["JavaScript", "Optimization", "WP Plugin"],
-    link: "https://github.com/nazsakib/fast-load-selective-assets",
-    img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop",
+    link: "https://wpfastloader.vercel.app/",
+    img: "/assets/projects/fastloader-asset-manager-wordpress-plugin.png",
   },
   {
     emoji: "📊",
@@ -72,10 +72,10 @@ const Projects = () => {
     <section id="projects" className="py-24 bg-background">
       <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
         >
           <span className="text-xs font-bold tracking-[0.2em] uppercase text-muted-foreground">Projects</span>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-2">Things I've Built</h2>
@@ -86,10 +86,10 @@ const Projects = () => {
           {projects.map((p, i) => (
             <motion.div
               key={p.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.5 }}
+              transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
               className="group flex flex-col bg-card border border-border rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-400"
             >
               {/* Image */}

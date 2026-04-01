@@ -38,10 +38,10 @@ const Skills = () => {
     <section id="skills" className="py-24 bg-background">
       <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
         >
           <span className="text-xs font-bold tracking-[0.2em] uppercase text-muted-foreground">Skills & Expertise</span>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-2">My Technical Skills</h2>
@@ -59,10 +59,10 @@ const Skills = () => {
                 {cat.skills.map((skill, si) => (
                   <motion.div
                     key={skill.name}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ delay: (ci * 0.1) + (si * 0.05), duration: 0.4 }}
+                    transition={{ delay: (ci * 0.1) + (si * 0.05), duration: 0.5, ease: "easeOut" }}
                     className="group relative bg-card border border-border rounded-xl p-5 flex flex-col gap-2.5 overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                   >
                     <div className="absolute top-0 left-0 right-0 h-0.5 bg-border group-hover:bg-primary transition-colors duration-300" />

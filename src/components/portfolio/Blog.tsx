@@ -32,10 +32,10 @@ const Blog = () => {
     <section id="blog" className="py-24 bg-surface-warm">
       <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
         >
           <span className="text-xs font-bold tracking-[0.2em] uppercase text-muted-foreground">Blog</span>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-2">Latest Articles</h2>
@@ -69,10 +69,10 @@ const Blog = () => {
                 href={article.url}
                 target="_blank"
                 rel="noreferrer"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.5 }}
+                transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
                 className="group flex flex-col bg-card border border-border rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-400"
               >
                 {/* Cover image */}
@@ -142,8 +142,8 @@ const Blog = () => {
 
         {/* View all link */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           className="mt-10 text-center"
         >
