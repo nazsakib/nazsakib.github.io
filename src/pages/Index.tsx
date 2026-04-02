@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { motion } from "framer-motion";
 import Navbar from "@/components/portfolio/Navbar";
 import Hero from "@/components/portfolio/Hero";
@@ -25,6 +25,17 @@ const SectionFallback = () => (
 );
 
 const Index = () => {
+  // Fix for reload scroll position issue
+  useEffect(() => {
+    // Disable browser default scroll restoration
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    
+    // Force scroll to top on mount/reload
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <SEO />
