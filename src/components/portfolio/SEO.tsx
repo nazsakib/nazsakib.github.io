@@ -21,6 +21,7 @@ const SEO = ({
     <Helmet>
       {/* Standard metadata tags */}
       <title>{title}</title>
+      <meta name="google-site-verification" content="A_KMFXmfMGUCa8Kd19jOQ5ZhDAMxbdZYjfRGKFvbKEQ" />
       <meta name="description" content={description} />
       
       {/* Open Graph tags for Facebook, LinkedIn, Discord etc. */}
