@@ -50,10 +50,10 @@ const Index = () => {
         <Suspense fallback={<SectionFallback />}>
           <About />
           <Projects />
-          <Shop />
           <Experience />
           <Skills />
           <Services />
+          <Shop />
           <Process />
           <Blog />
           <Contact />
