@@ -14,7 +14,7 @@ const SEO = ({
   description = "Official portfolio of Sakib MD Nazmush. Technical Support Engineer at Zepto Apps, Shopify Designer, and Automation Expert (n8n, Zapier).",
   name = "Sakib MD Nazmush",
   type = "website",
-  image = "https://res.cloudinary.com/dr1nwz8am/image/upload/v1773056630/1000006476_ziyqmn.webp", // High-quality absolute URL
+  image = "https://res.cloudinary.com/dr1nwz8am/image/upload/v1775129286/sakib_md_nazmush_sakibsnaz_technical_support_automation_uyg4dj.png", // Updated Hero Screenshot
   url = "https://sakibnazmush.vercel.app", 
 }: SEOProps) => {
   return (
