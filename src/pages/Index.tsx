@@ -10,6 +10,7 @@ const About = React.lazy(() => import("@/components/portfolio/About"));
 const Services = React.lazy(() => import("@/components/portfolio/Services"));
 const Process = React.lazy(() => import("@/components/portfolio/Process"));
 const Projects = React.lazy(() => import("@/components/portfolio/Projects"));
+const Shop = React.lazy(() => import("@/components/portfolio/Shop"));
 const Experience = React.lazy(() => import("@/components/portfolio/Experience"));
 const Skills = React.lazy(() => import("@/components/portfolio/Skills"));
 const Blog = React.lazy(() => import("@/components/portfolio/Blog"));
@@ -38,6 +39,7 @@ const Index = () => {
         <Suspense fallback={<SectionFallback />}>
           <About />
           <Projects />
+          <Shop />
           <Experience />
           <Skills />
           <Services />
