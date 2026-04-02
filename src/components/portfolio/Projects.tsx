@@ -83,7 +83,7 @@ const Projects = () => {
           <div className="w-10 h-0.5 bg-primary rounded-full mt-4 mb-10" />
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((p, i) => (
             <motion.div
               key={p.title}
@@ -91,39 +91,54 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
-              className="group flex flex-col bg-card border border-border rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-400"
+              className="group flex flex-col glass bg-card/40 border border-white/5 rounded-[2.5rem] overflow-hidden hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:shadow-primary/5 hover:-translate-y-3 transition-all duration-500 backdrop-blur-md"
             >
-              {/* Image */}
-              <div className="relative overflow-hidden border-b border-border">
+              {/* Image Section */}
+              <div className="relative overflow-hidden aspect-[16/10] rounded-[2rem] m-3 shadow-inner">
                 <OptimizedImage
                   src={p.img}
                   alt={`${p.title} — Built by Sakib MD Nazmush (sakibsnaz) using ${p.tags.join(", ")}`}
-                  className="w-full h-44 object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-card/20" />
+                
+                {/* Floating Category Pill */}
+                <div className="absolute top-4 left-4 px-4 py-1.5 bg-slate-dark/60 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl z-20">
+                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">
+                    {p.category}
+                  </span>
+                </div>
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
               {/* Body */}
-              <div className="p-5 flex flex-col flex-grow">
-                <div className="flex items-start justify-between mb-3">
-                  <span className="text-2xl">{p.emoji}</span>
+              <div className="p-7 pt-4 flex flex-col flex-grow relative">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex flex-col gap-1">
+                    <span className="text-2xl">{p.emoji}</span>
+                    <h3 className="font-heading text-lg font-bold text-foreground group-hover:text-primary transition-colors leading-tight line-clamp-1">
+                      {p.title}
+                    </h3>
+                  </div>
                   <a
                     href={p.link}
                     target="_blank"
                     rel="noreferrer"
-                    className="w-8 h-8 rounded-full border border-border bg-secondary flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-200"
+                    className="shrink-0 w-10 h-10 rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:scale-110 transition-all duration-300"
                   >
-                    <ExternalLink size={14} />
+                    <ExternalLink size={16} />
                   </a>
                 </div>
-                <h3 className="font-heading text-sm font-bold text-foreground">{p.title}</h3>
-                <span className="text-[0.65rem] uppercase tracking-wider font-bold text-primary/70 mt-1">{p.category}</span>
-                <p className="text-xs text-muted-foreground leading-relaxed mt-3 flex-grow">{p.desc}</p>
-                <div className="flex flex-wrap gap-1.5 mt-4 pt-4 border-t border-border">
+
+                <p className="text-sm text-muted-foreground/80 leading-relaxed mt-2 flex-grow line-clamp-3 italic">
+                  "{p.desc}"
+                </p>
+
+                <div className="flex flex-wrap gap-2 mt-6 pt-6 border-t border-white/5">
                   {p.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-[0.6rem] font-bold uppercase tracking-wide px-2.5 py-1 rounded-md bg-secondary text-muted-foreground group-hover:bg-teal-light group-hover:text-primary transition-colors"
+                      className="text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-md bg-primary/5 text-primary border border-primary/10"
                     >
                       {tag}
                     </span>

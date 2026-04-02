@@ -10,12 +10,12 @@ interface SEOProps {
 }
 
 const SEO = ({
-  title = "Sakib MD Nazmush - Full-Stack Developer",
-  description = "A versatile Full-Stack Developer & Tech Automation Expert specializing in React, Node.js, and WordPress. Explore my portfolio of high-performance web applications and automation tools.",
+  title = "Sakib MD Nazmush - Technical Support & Automation Expert",
+  description = "Official portfolio of Sakib MD Nazmush. Technical Support Engineer at Zepto Apps, Shopify Designer, and Automation Expert (n8n, Zapier).",
   name = "Sakib MD Nazmush",
   type = "website",
-  image = "/og-image.png", // Ensure you have a nice preview image in the public folder
-  url = "https://sakibnazmush.vercel.app", // Updated to Vercel URL
+  image = "https://res.cloudinary.com/dr1nwz8am/image/upload/v1773056630/1000006476_ziyqmn.webp", // High-quality absolute URL
+  url = "https://sakibnazmush.vercel.app", 
 }: SEOProps) => {
   return (
     <Helmet>

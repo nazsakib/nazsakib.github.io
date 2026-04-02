@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Calendar, Heart, MessageCircle } from "lucide-react";
+import { ExternalLink, Heart, MessageCircle, Loader2 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import OptimizedImage from "@/components/ui/OptimizedImage";
 
@@ -31,7 +31,7 @@ const Blog = () => {
   const { data: articles, isLoading, error } = useQuery({
     queryKey: ["devto-articles-fresh"],
     queryFn: fetchArticles,
-    staleTime: 0, // Always refetch to ensure latest dev.to posts are shown
+    staleTime: 0, 
     refetchOnWindowFocus: true,
   });
 
@@ -69,115 +69,164 @@ const Blog = () => {
         )}
 
         {articles && (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {articles.map((article, i) => (
-              <motion.a
-                key={article.id}
-                href={article.url}
-                target="_blank"
-                rel="noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
-                className={`group flex flex-col bg-card border border-border rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-400 ${i === 0 ? "md:col-span-2 md:row-span-2" : ""}`}
-              >
-                {/* Cover image */}
-                <div className={`relative overflow-hidden border-b border-border bg-secondary shrink-0 ${i === 0 ? "h-56 md:h-[22rem]" : "h-40"}`}>
-                  {article.cover_image ? (
-                    <OptimizedImage
-                      src={article.cover_image}
-                      alt={article.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-secondary to-muted">
-                      <span className="text-4xl">✍️</span>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {articles.map((article, i) => {
+              if (i === 0) {
+                return (
+                  <motion.a
+                    key={article.id}
+                    href={article.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    className="group relative md:col-span-3 flex flex-col bg-slate-dark border border-white/10 rounded-[2.5rem] overflow-hidden shadow-2xl hover:shadow-primary/10 transition-all duration-500 min-h-[400px] lg:min-h-[480px]"
+                  >
+                    {/* Background Layer with Multi-Glow */}
+                    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+                      <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] animate-pulse" />
+                      <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-teal/5 blur-[100px]" />
                     </div>
-                  )}
-                  
-                  {/* 1. "Latest" / "Featured" Badge */}
-                  {i === 0 && (
-                    <div className="absolute top-3 left-3 px-3 py-1.5 rounded-md bg-primary text-primary-foreground text-[0.65rem] font-bold shadow-lg flex items-center gap-2 z-10">
-                      <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-foreground opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-foreground"></span>
-                      </span>
-                      Featured Post
-                    </div>
-                  )}
 
-                  <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-card/90 backdrop-blur-sm text-[0.65rem] font-bold text-muted-foreground z-10">
-                    {article.reading_time_minutes} min read
-                  </div>
-
-                  {/* 5. Hover Overlay Effects */}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px] z-0">
-                    <span className="translate-y-4 group-hover:translate-y-0 transition-all duration-300 bg-white/10 text-white border border-white/20 backdrop-blur-md px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 shadow-xl">
-                      Read on Dev.to <ExternalLink size={16} />
-                    </span>
-                  </div>
-                </div>
-
-                {/* Body */}
-                <div className="p-5 flex flex-col flex-grow relative">
-                  <h3 className={`font-heading font-bold text-foreground leading-snug group-hover:text-primary transition-colors ${i === 0 ? "text-xl md:text-3xl line-clamp-3" : "text-sm line-clamp-2"}`}>
-                    {article.title}
-                  </h3>
-                  <p className={`text-muted-foreground leading-relaxed mt-3 flex-grow ${i === 0 ? "text-sm md:text-base line-clamp-4" : "text-xs line-clamp-3"}`}>
-                    {article.description}
-                  </p>
-
-                  {/* 3. Dynamic Tag Display */}
-                  {article.tag_list.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5 mt-4 mb-2">
-                      {article.tag_list.slice(0, i === 0 ? 5 : 3).map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-[0.6rem] font-bold uppercase tracking-wide px-2.5 py-1 rounded-md bg-secondary text-muted-foreground group-hover:bg-teal-light group-hover:text-primary transition-colors"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-
-                  <div className="flex items-center justify-between mt-auto pt-4 border-t border-border">
-                    {/* 4. Author Profile Image & Name */}
-                    <div className="flex items-center gap-2">
-                      {article.user?.profile_image_90 && (
-                         <OptimizedImage 
-                           src={article.user.profile_image_90} 
-                           alt={article.user.name} 
-                           className="w-5 h-5 rounded-full" 
-                           wrapperClassName="w-5 h-5 rounded-full"
-                         />
+                    {/* Image Section (Hero Style) */}
+                    <div className="relative w-full h-[300px] md:h-auto md:absolute md:inset-0 md:left-1/2 overflow-hidden">
+                      {article.cover_image ? (
+                        <OptimizedImage
+                          src={article.cover_image}
+                          alt={article.title}
+                          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-50 md:opacity-70"
+                          wrapperClassName="w-full h-full"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-slate-dark to-slate-900" />
                       )}
-                      <span className="text-xs font-medium text-foreground">{article.user?.name || "Sakib"}</span>
+                      
+                      {/* Modern Floating Stats Pill */}
+                      <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 flex items-center gap-4 px-4 py-2 md:px-5 md:py-2.5 bg-slate-dark/60 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl z-20 transition-transform group-hover:translate-y-[-5px]">
+                        <div className="flex items-center gap-2">
+                          <Heart size={16} className="text-primary fill-primary/20" />
+                          <span className="text-xs font-black text-white">{article.positive_reactions_count}</span>
+                        </div>
+                        <div className="w-px h-4 bg-white/10" />
+                        <div className="flex items-center gap-2">
+                          <MessageCircle size={16} className="text-primary fill-primary/20" />
+                          <span className="text-xs font-black text-white">{article.comments_count}</span>
+                        </div>
+                      </div>
+
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-dark via-slate-dark/40 to-transparent md:bg-gradient-to-r md:from-slate-dark md:via-slate-dark/20 md:to-transparent" />
                     </div>
 
-                    <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                      <span className="flex items-center gap-1">
-                        <Heart size={12} />
-                        {article.positive_reactions_count}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <MessageCircle size={12} />
-                        {article.comments_count}
-                      </span>
-                      {/* 2. "Read Article ↗" Arrow (subtle icon at bottom) */}
-                      <span className="ml-1 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-primary">
-                        <ExternalLink size={14} />
-                      </span>
+                    {/* Content Section (Smart Column) */}
+                    <div className="relative z-10 w-full md:w-[60%] p-8 md:p-12 lg:p-20 flex flex-col justify-center items-start">
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="px-4 py-1.5 rounded-full bg-primary/20 border border-primary/30 text-primary text-[0.65rem] font-black uppercase tracking-[0.2em] backdrop-blur-md">
+                          Latest Release
+                        </div>
+                        <div className="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/40 text-[0.65rem] font-bold">
+                          {article.reading_time_minutes} min read
+                        </div>
+                      </div>
+
+                      <h3 className="font-heading text-2xl md:text-4xl lg:text-5xl font-black text-white leading-[1.05] mb-6 group-hover:text-primary transition-colors tracking-tighter">
+                        {article.title}
+                      </h3>
+                      
+                      <p className="text-sm md:text-lg text-white/50 leading-relaxed line-clamp-2 mb-10 max-w-2xl font-light italic">
+                        "{article.description}"
+                      </p>
+
+                      <div className="flex items-center gap-5 pt-8 border-t border-white/5 w-full group/author">
+                        {article.user?.profile_image_90 && (
+                           <div className="relative">
+                             <div className="absolute inset-0 bg-primary/20 blur-lg rounded-full" />
+                             <OptimizedImage 
+                               src={article.user.profile_image_90} 
+                               alt={article.user.name} 
+                               className="relative w-14 h-14 rounded-2xl border-2 border-white/10 object-cover grayscale group-hover/author:grayscale-0 transition-all duration-500" 
+                               wrapperClassName="w-14 h-14 rounded-2xl"
+                             />
+                           </div>
+                        )}
+                        <div className="flex flex-col">
+                          <span className="text-base font-bold text-white tracking-tight leading-none mb-1">{article.user?.name || "Sakib"}</span>
+                          <span className="text-[10px] text-primary font-black uppercase tracking-[0.3em]">Developer & Author</span>
+                        </div>
+                        
+                        <div className="ml-auto">
+                           <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all duration-500 rotate-[-45deg] group-hover:rotate-0">
+                             <ExternalLink size={18} />
+                           </div>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.a>
+                );
+              }
+
+              return (
+                <motion.a
+                  key={article.id}
+                  href={article.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
+                  className="group flex flex-col bg-card border border-border rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-400"
+                >
+                  <div className="relative overflow-hidden aspect-video bg-secondary shrink-0">
+                    {article.cover_image ? (
+                      <OptimizedImage
+                        src={article.cover_image}
+                        alt={article.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        wrapperClassName="w-full h-full"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-secondary to-muted">
+                        <span className="text-4xl">✍️</span>
+                      </div>
+                    )}
+                    <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-card/90 backdrop-blur-sm text-[0.65rem] font-bold text-muted-foreground z-10">
+                      {article.reading_time_minutes} min read
                     </div>
                   </div>
-                </div>
-              </motion.a>
-            ))}
+
+                  <div className="p-5 pt-4 flex flex-col flex-grow">
+                    <h3 className="font-heading text-base font-bold text-foreground leading-snug group-hover:text-primary transition-colors line-clamp-2">
+                      {article.title}
+                    </h3>
+                    <p className="text-[11px] text-muted-foreground leading-relaxed mt-2 flex-grow line-clamp-3">
+                      {article.description}
+                    </p>
+                    <div className="flex items-center justify-between mt-6 pt-4 border-t border-border">
+                      <div className="flex items-center gap-2">
+                        {article.user?.profile_image_90 && (
+                           <OptimizedImage 
+                             src={article.user.profile_image_90} 
+                             alt={article.user.name} 
+                             className="w-5 h-5 rounded-full" 
+                             wrapperClassName="w-5 h-5 rounded-full"
+                           />
+                        )}
+                        <span className="text-[10px] font-medium text-foreground">{article.user?.name}</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-[10px] text-muted-foreground">
+                        <Heart size={12} />
+                        <MessageCircle size={12} />
+                      </div>
+                    </div>
+                  </div>
+                </motion.a>
+              );
+            })}
           </div>
         )}
 
-        {/* View all link */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

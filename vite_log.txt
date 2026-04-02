@@ -1,0 +1,95 @@
+
+> vite_react_shadcn_ts@0.0.0 dev
+> vite
+
+
+  VITE v5.4.19  ready in 154 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://192.168.0.107:5173/
+Browserslist: browsers data (caniuse-lite) is 10 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+warn - The class `ease-[cubic-bezier(0.22,1,0.36,1)]` is ambiguous and matches multiple utilities.
+warn - If this is content and not a class, replace it with `ease-&lsqb;cubic-bezier(0.22,1,0.36,1)&rsqb;` to silence this warning.
+1:09:45 PM [vite] hmr update /src/components/portfolio/Shop.tsx, /src/index.css
+1:10:47 PM [vite] hmr update /src/components/portfolio/Shop.tsx, /src/index.css
+1:11:26 PM [vite] hmr update /src/components/portfolio/Shop.tsx, /src/index.css
+1:12:11 PM [vite] hmr update /src/components/portfolio/Shop.tsx, /src/index.css
+1:12:55 PM [vite] hmr update /src/components/portfolio/Shop.tsx, /src/index.css
+1:13:38 PM [vite] hmr update /src/components/portfolio/Shop.tsx, /src/index.css
+1:14:27 PM [vite] hmr update /src/components/portfolio/Shop.tsx, /src/index.css
+1:15:06 PM [vite] hmr update /src/components/portfolio/Shop.tsx, /src/index.css
+1:16:10 PM [vite] hmr update /src/components/portfolio/Shop.tsx, /src/index.css
+1:19:21 PM [vite] hmr update /src/components/portfolio/Shop.tsx, /src/index.css
+1:20:03 PM [vite] hmr update /src/components/portfolio/Shop.tsx, /src/index.css
+1:20:48 PM [vite] hmr update /src/components/portfolio/Shop.tsx, /src/index.css
+1:21:45 PM [vite] hmr update /src/components/portfolio/Shop.tsx, /src/index.css
+1:23:16 PM [vite] hmr update /src/components/portfolio/Shop.tsx, /src/index.css
+1:24:25 PM [vite] hmr update /src/components/portfolio/Shop.tsx, /src/index.css
+1:24:35 PM [vite] hmr update /src/components/portfolio/Shop.tsx, /src/index.css
+1:25:11 PM [vite] hmr update /src/components/portfolio/Shop.tsx, /src/index.css
+1:26:20 PM [vite] .env changed, restarting server...
+1:26:20 PM [vite] server restarted.
+1:33:31 PM [vite] hmr update /src/pages/Index.tsx, /src/index.css
+1:33:49 PM [vite] hmr update /src/components/portfolio/ScrollSpy.tsx, /src/index.css
+1:34:20 PM [vite] hmr update /src/index.css
+
+warn - The class `ease-[cubic-bezier(0.22,1,0.36,1)]` is ambiguous and matches multiple utilities.
+warn - If this is content and not a class, replace it with `ease-&lsqb;cubic-bezier(0.22,1,0.36,1)&rsqb;` to silence this warning.
+1:35:15 PM [vite] hmr update /src/pages/Index.tsx, /src/index.css
+1:35:23 PM [vite] hmr update /src/index.css, /src/App.tsx
+1:36:00 PM [vite] hmr update /src/components/portfolio/ScrollSpy.tsx, /src/index.css
+1:42:32 PM [vite] hmr update /src/components/portfolio/SEO.tsx, /src/index.css
+2:00:01 PM [vite] page reload index.html
+2:08:57 PM [vite] hmr update /src/components/portfolio/SEO.tsx, /src/index.css
+2:09:28 PM [vite] page reload index.html
+2:31:56 PM [vite] hmr update /src/pages/Index.tsx, /src/index.css
+2:32:05 PM [vite] hmr update /src/components/portfolio/Navbar.tsx, /src/index.css
+2:34:30 PM [vite] hmr update /src/components/portfolio/Navbar.tsx, /src/index.css
+2:34:37 PM [vite] hmr update /src/index.css, /src/pages/Index.tsx
+2:34:45 PM [vite] hmr update /src/components/portfolio/Navbar.tsx, /src/index.css
+2:36:06 PM [vite] hmr update /src/components/portfolio/Navbar.tsx, /src/index.css
+2:36:18 PM [vite] hmr update /src/components/portfolio/Navbar.tsx, /src/index.css
+2:37:10 PM [vite] hmr update /src/components/portfolio/Navbar.tsx, /src/index.css
+2:38:07 PM [vite] hmr update /src/index.css
+2:39:26 PM [vite] hmr update /src/index.css
+
+warn - The class `ease-[cubic-bezier(0.22,1,0.36,1)]` is ambiguous and matches multiple utilities.
+warn - If this is content and not a class, replace it with `ease-&lsqb;cubic-bezier(0.22,1,0.36,1)&rsqb;` to silence this warning.
+2:41:56 PM [vite] hmr update /src/components/portfolio/Services.tsx, /src/index.css
+2:43:40 PM [vite] hmr update /src/components/portfolio/Services.tsx, /src/index.css
+2:44:32 PM [vite] hmr update /src/components/portfolio/Services.tsx, /src/index.css
+2:45:01 PM [vite] hmr update /src/pages/Index.tsx, /src/index.css
+2:47:20 PM [vite] hmr update /src/components/portfolio/Services.tsx, /src/index.css
+2:48:20 PM [vite] hmr update /src/components/portfolio/Blog.tsx, /src/index.css
+4:01:44 PM [vite] hmr update /src/components/portfolio/Blog.tsx, /src/index.css
+4:04:01 PM [vite] hmr update /src/components/portfolio/Blog.tsx, /src/index.css
+4:05:27 PM [vite] hmr update /src/components/portfolio/Blog.tsx, /src/index.css
+4:08:11 PM [vite] hmr update /src/components/portfolio/Blog.tsx, /src/index.css
+4:11:34 PM [vite] hmr update /src/components/portfolio/Blog.tsx, /src/index.css
+4:13:47 PM [vite] hmr update /src/components/portfolio/Blog.tsx, /src/index.css
+4:18:19 PM [vite] hmr update /src/components/portfolio/Hero.tsx, /src/index.css
+4:19:17 PM [vite] hmr update /src/components/portfolio/Projects.tsx, /src/index.css
+4:22:31 PM [vite] hmr update /src/components/portfolio/Hero.tsx, /src/index.css
+4:26:44 PM [vite] hmr update /src/pages/Index.tsx, /src/index.css
+4:28:35 PM [vite] hmr update /src/components/portfolio/Hero.tsx, /src/index.css
+4:34:33 PM [vite] hmr update /src/components/portfolio/Hero.tsx, /src/index.css
+4:36:03 PM [vite] hmr update /src/components/portfolio/Hero.tsx, /src/index.css
+4:41:38 PM [vite] hmr update /src/components/portfolio/Hero.tsx, /src/index.css
+4:45:27 PM [vite] hmr update /src/components/portfolio/Hero.tsx, /src/index.css
+4:47:30 PM [vite] hmr update /src/components/portfolio/Hero.tsx, /src/index.css
+4:50:50 PM [vite] hmr update /src/components/portfolio/Hero.tsx, /src/index.css
+4:51:55 PM [vite] hmr update /src/pages/Index.tsx, /src/index.css
+4:55:32 PM [vite] hmr update /src/components/portfolio/Hero.tsx, /src/index.css
+4:57:37 PM [vite] hmr update /src/components/portfolio/Hero.tsx, /src/index.css
+4:59:51 PM [vite] hmr update /src/components/portfolio/Hero.tsx, /src/index.css
+5:01:27 PM [vite] hmr update /src/components/portfolio/Hero.tsx, /src/index.css
+5:07:21 PM [vite] hmr update /src/components/portfolio/Hero.tsx, /src/index.css
+5:09:29 PM [vite] hmr update /src/pages/Index.tsx, /src/index.css
+5:11:07 PM [vite] hmr update /src/components/portfolio/Hero.tsx, /src/index.css
+5:16:54 PM [vite] hmr update /src/components/portfolio/Blog.tsx, /src/index.css
+5:20:45 PM [vite] hmr update /src/pages/Index.tsx, /src/index.css
+5:22:22 PM [vite] hmr update /src/components/portfolio/SEO.tsx, /src/index.css
+5:22:32 PM [vite] page reload index.html
