@@ -15,7 +15,7 @@ const SEO = ({
   name = "Sakib MD Nazmush",
   type = "website",
   image = "/og-image.png", // Ensure you have a nice preview image in the public folder
-  url = "https://sakibsnaz.com", // Or your main URL
+  url = "https://sakibnazmush.vercel.app", // Updated to Vercel URL
 }: SEOProps) => {
   return (
     <Helmet>
