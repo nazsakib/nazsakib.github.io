@@ -152,7 +152,7 @@ const Blog = () => {
                         )}
                         <div className="flex flex-col">
                           <span className="text-base font-bold text-white tracking-tight leading-none mb-1">{article.user?.name || "Sakib"}</span>
-                          <span className="text-[10px] text-primary font-black uppercase tracking-[0.3em]">Developer & Author</span>
+                          <span className="text-[10px] text-primary font-black uppercase tracking-[0.3em]">Support Engineer & Author</span>
                         </div>
                         
                         <div className="ml-auto">
@@ -216,8 +216,14 @@ const Blog = () => {
                         <span className="text-[10px] font-medium text-foreground">{article.user?.name}</span>
                       </div>
                       <div className="flex items-center gap-3 text-[10px] text-muted-foreground">
-                        <Heart size={12} />
-                        <MessageCircle size={12} />
+                        <div className="flex items-center gap-1">
+                          <Heart size={12} />
+                          <span>{article.positive_reactions_count}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <MessageCircle size={12} />
+                          <span>{article.comments_count}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
