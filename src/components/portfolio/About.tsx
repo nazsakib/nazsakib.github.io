@@ -68,7 +68,7 @@ const About = () => {
             </p>
             <p>
               Beyond work, I share knowledge on my{" "}
-              <a href="https://dev.to/sakibnazmush" target="_blank" rel="noreferrer" className="text-primary font-semibold underline underline-offset-2 hover:text-teal-glow transition-colors">
+              <a href="https://dev.to/sakibsnaz" target="_blank" rel="noreferrer" className="text-primary font-semibold underline underline-offset-2 hover:text-teal-glow transition-colors">
                 dev.to blog
               </a>{" "}
               — writing about Automation, Telegram Bots, WordPress, and technical support best practices.

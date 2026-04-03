@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nazsakib.github.io/sitemap.xml
+Sitemap: https://sakibnazmush.vercel.app/sitemap.xml
