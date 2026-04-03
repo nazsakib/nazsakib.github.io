@@ -32,7 +32,7 @@ const Hero = () => {
       {/* Background Layer: Typography */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
         <h1 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[22vw] font-black text-white/[0.02] tracking-tighter leading-none whitespace-nowrap">
-          SAKIB SNZ
+          SAKIBSNAZ
         </h1>
       </div>
 
@@ -108,12 +108,12 @@ const Hero = () => {
               transition={{ delay: 0.4, duration: 1.2, ease: "easeOut" }}
               className="relative w-full h-full pointer-events-none group z-10"
             >
-              <div className="relative w-full h-full overflow-hidden bg-slate-dark">
+              <div className="relative w-full h-full overflow-hidden !bg-slate-dark/20">
                 <OptimizedImage
-                  src="https://res.cloudinary.com/dr1nwz8am/image/upload/v1773056630/1000006476_ziyqmn.webp"
+                  src="https://res.cloudinary.com/dr1nwz8am/image/upload/q_auto/f_auto/v1775198580/sakib_nazmush_sakibsnaz_technical_support_automation_odh3g9.png"
                   alt="Sakib MD Nazmush"
                   className="w-full h-full object-contain lg:object-cover grayscale brightness-75 contrast-125 transition-all duration-1000 group-hover:grayscale-0 group-hover:brightness-100"
-                  wrapperClassName="w-full h-full bg-slate-dark"
+                  wrapperClassName="w-full h-full !bg-slate-dark/20"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-dark via-slate-dark/20 to-transparent" />
                 <div className="absolute inset-0 hidden lg:block bg-gradient-to-r from-slate-dark via-slate-dark/40 to-transparent" />
