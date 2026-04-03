@@ -1,13 +1,6 @@
 import { motion } from "framer-motion";
-import { Mail, Github, Linkedin, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import { useState, FormEvent } from "react";
-
-const contactLinks = [
-  { icon: <Mail size={18} />, label: "Email", value: "sakibsnaz@gmail.com", href: "mailto:sakibsnaz@gmail.com" },
-  { icon: <span className="font-mono text-xs font-bold">{"{/}"}</span>, label: "dev.to", value: "dev.to/sakibsnaz", href: "https://dev.to/sakibsnaz" },
-  { icon: <Github size={18} />, label: "GitHub", value: "github.com/nazsakib", href: "https://github.com/nazsakib" },
-  { icon: <Linkedin size={18} />, label: "LinkedIn", value: "linkedin.com/in/sakibsnaz", href: "https://www.linkedin.com/in/sakibsnaz/" },
-];
 
 const Contact = () => {
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "err">("idle");
@@ -34,104 +27,99 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-hero">
-      <div className="container">
-        <div className="grid md:grid-cols-3 gap-10 items-start">
-          {/* Left */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary-foreground leading-tight">
-              Let's Work
-              <br />
-              Together
-            </h2>
-            <p className="text-sm text-primary-foreground/40 leading-relaxed mt-4">
-              Have a WordPress challenge, an LMS to build, or need a Shopify store? I'm always open to interesting projects.
-            </p>
-          </motion.div>
+    <section id="contact" className="py-28 bg-hero relative overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-20 -left-10 w-72 h-72 rounded-full bg-primary/20 blur-3xl" />
+        <div className="absolute -bottom-20 -right-10 w-72 h-72 rounded-full bg-teal/20 blur-3xl" />
+      </div>
 
-          {/* Form */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.5, ease: "easeOut" }}
-          >
-            <h3 className="font-heading text-xl font-bold text-primary-foreground mb-4">Drop me a line</h3>
-            <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-              <div className="grid grid-cols-2 gap-3">
-                <input
-                  name="name"
-                  placeholder="Your Name"
-                  required
-                  className="w-full bg-primary-foreground/5 border border-primary-foreground/10 rounded-lg px-4 py-3 text-sm text-primary-foreground placeholder:text-primary-foreground/25 focus:outline-none focus:border-primary/50 transition-colors"
-                />
-                <input
-                  name="email"
-                  type="email"
-                  placeholder="Your Email"
-                  required
-                  className="w-full bg-primary-foreground/5 border border-primary-foreground/10 rounded-lg px-4 py-3 text-sm text-primary-foreground placeholder:text-primary-foreground/25 focus:outline-none focus:border-primary/50 transition-colors"
-                />
+      <div className="container relative z-10">
+        <div className="rounded-[2rem] border border-white/10 bg-slate-dark/50 backdrop-blur-xl shadow-[0_24px_80px_rgba(0,0,0,0.35)] p-6 md:p-10 lg:p-14">
+          <div className="grid md:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-14 items-start">
+            {/* Left */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <span className="inline-flex items-center px-4 py-1.5 rounded-full border border-primary/40 bg-primary/20 text-primary text-[0.65rem] font-black uppercase tracking-[0.2em]">
+                Project Inquiry
+              </span>
+
+              <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground leading-[0.95] mt-6">
+                Let's Work
+                <br />
+                Together
+              </h2>
+
+              <p className="text-sm md:text-base text-primary-foreground/65 leading-relaxed mt-6 max-w-md">
+                Have a WordPress challenge, an LMS to build, or need a Shopify store? Share your project details and I will get back to you with a clear next-step plan.
+              </p>
+
+              <div className="flex flex-wrap gap-2 mt-7">
+                {["WordPress", "Shopify", "LMS", "Automation"].map((item) => (
+                  <span
+                    key={item}
+                    className="px-3 py-1.5 rounded-full border border-white/15 bg-white/5 text-[10px] font-black uppercase tracking-[0.14em] text-primary-foreground/80"
+                  >
+                    {item}
+                  </span>
+                ))}
               </div>
-              <input
-                name="subject"
-                placeholder="Subject"
-                required
-                className="w-full bg-primary-foreground/5 border border-primary-foreground/10 rounded-lg px-4 py-3 text-sm text-primary-foreground placeholder:text-primary-foreground/25 focus:outline-none focus:border-primary/50 transition-colors"
-              />
-              <textarea
-                name="message"
-                rows={4}
-                placeholder="Your message..."
-                required
-                className="w-full bg-primary-foreground/5 border border-primary-foreground/10 rounded-lg px-4 py-3 text-sm text-primary-foreground placeholder:text-primary-foreground/25 focus:outline-none focus:border-primary/50 transition-colors resize-none"
-              />
-              <input type="text" name="_gotcha" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
-              <button
-                type="submit"
-                disabled={status === "sending"}
-                className="self-start inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold text-sm rounded-lg hover:shadow-glow transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-50"
-              >
-                <Send size={15} />
-                {status === "sending" ? "Sending..." : "Send Message"}
-              </button>
-              {status === "ok" && <p className="text-sm text-primary/80">✓ Thanks for your submission!</p>}
-              {status === "err" && <p className="text-sm text-destructive">✗ Something went wrong. Please try again.</p>}
-            </form>
-          </motion.div>
+            </motion.div>
 
-          {/* Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
-          >
-            <h3 className="font-heading text-xl font-bold text-primary-foreground mb-4">Let's Connect</h3>
-            <div className="flex flex-col gap-4">
-              {contactLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target={link.href.startsWith("mailto") ? undefined : "_blank"}
-                  rel="noreferrer"
-                  className="flex items-center gap-3 text-primary-foreground/80 hover:text-primary-foreground/50 transition-opacity"
+            {/* Form */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1, duration: 0.5, ease: "easeOut" }}
+              className="rounded-3xl border border-white/10 bg-white/[0.03] p-5 md:p-7"
+            >
+              <h3 className="font-heading text-xl font-bold text-primary-foreground mb-5">Drop me a line</h3>
+              <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
+                <div className="grid sm:grid-cols-2 gap-3.5">
+                  <input
+                    name="name"
+                    placeholder="Your Name"
+                    required
+                    className="w-full bg-primary-foreground/[0.04] border border-primary-foreground/15 rounded-xl px-4 py-3 text-sm text-primary-foreground placeholder:text-primary-foreground/35 focus:outline-none focus:border-primary/60 focus:bg-primary-foreground/[0.07] transition-colors"
+                  />
+                  <input
+                    name="email"
+                    type="email"
+                    placeholder="Your Email"
+                    required
+                    className="w-full bg-primary-foreground/[0.04] border border-primary-foreground/15 rounded-xl px-4 py-3 text-sm text-primary-foreground placeholder:text-primary-foreground/35 focus:outline-none focus:border-primary/60 focus:bg-primary-foreground/[0.07] transition-colors"
+                  />
+                </div>
+                <input
+                  name="subject"
+                  placeholder="Subject"
+                  required
+                  className="w-full bg-primary-foreground/[0.04] border border-primary-foreground/15 rounded-xl px-4 py-3 text-sm text-primary-foreground placeholder:text-primary-foreground/35 focus:outline-none focus:border-primary/60 focus:bg-primary-foreground/[0.07] transition-colors"
+                />
+                <textarea
+                  name="message"
+                  rows={5}
+                  placeholder="Your message..."
+                  required
+                  className="w-full bg-primary-foreground/[0.04] border border-primary-foreground/15 rounded-xl px-4 py-3 text-sm text-primary-foreground placeholder:text-primary-foreground/35 focus:outline-none focus:border-primary/60 focus:bg-primary-foreground/[0.07] transition-colors resize-none"
+                />
+                <input type="text" name="_gotcha" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
+                <button
+                  type="submit"
+                  disabled={status === "sending"}
+                  className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 bg-primary text-primary-foreground font-black text-xs uppercase tracking-[0.14em] rounded-xl hover:shadow-glow transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-50"
                 >
-                  <div className="w-9 h-9 rounded-lg bg-primary-foreground/5 border border-primary-foreground/10 flex items-center justify-center flex-shrink-0">
-                    {link.icon}
-                  </div>
-                  <div>
-                    <div className="text-[0.65rem] text-primary-foreground/30 tracking-wide">{link.label}</div>
-                    <div className="text-sm font-semibold">{link.value}</div>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </motion.div>
+                  <Send size={15} />
+                  {status === "sending" ? "Sending..." : "Send Message"}
+                </button>
+                {status === "ok" && <p className="text-sm text-primary/90">✓ Thanks for your submission!</p>}
+                {status === "err" && <p className="text-sm text-destructive">✗ Something went wrong. Please try again.</p>}
+              </form>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

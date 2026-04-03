@@ -1,24 +1,27 @@
 import { motion } from "framer-motion";
-import { Search, PenTool, Rocket } from "lucide-react";
+import { LifeBuoy, Bug, FileText } from "lucide-react";
 
 const steps = [
   {
     num: "01",
-    title: "Discovery & Strategy",
-    desc: "We start by diving deep into your goals. I analyze your requirements to build a bulletproof roadmap tailored to your specific needs.",
-    icon: <Search className="w-5 h-5" />,
+    title: "Ticket Triage & Prioritization",
+    desc: "I classify issues by impact and urgency, reproduce failures quickly, and define a clean response path so high-value problems are solved first.",
+    icon: <LifeBuoy className="w-5 h-5" />,
+    output: "Output: clean queue, clear ownership, faster first response",
   },
   {
     num: "02",
-    title: "Precision Engineering",
-    desc: "Using modern frameworks and clean architecture, I build your solution with a focus on scalability, security, and high performance.",
-    icon: <PenTool className="w-5 h-5" />,
+    title: "Root-Cause Resolution",
+    desc: "I isolate the real source of the issue, validate fixes against edge cases, and communicate implementation details in language merchants can trust.",
+    icon: <Bug className="w-5 h-5" />,
+    output: "Output: stable fixes with fewer repeat tickets",
   },
   {
     num: "03",
-    title: "Optimization & Launch",
-    desc: "Rigorous testing and performance tuning ensure a flawless launch. I hand over a product that is fast, reliable, and ready to grow.",
-    icon: <Rocket className="w-5 h-5" />,
+    title: "Automation for Clients & Personal Ops",
+    desc: "Beyond my ticket queue role, I design automation systems for client workflows and my own operations using tools like n8n, Zapier, and custom integrations.",
+    icon: <FileText className="w-5 h-5" />,
+    output: "Output: practical automations that save time and reduce manual work",
   },
 ];
 
@@ -33,8 +36,8 @@ const Process = () => {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="text-center max-w-2xl mx-auto mb-16"
         >
-          <span className="text-xs font-bold tracking-[0.2em] uppercase text-muted-foreground">Workflow</span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-2 text-balance">The 3-Step Success Strategy</h2>
+          <span className="text-xs font-bold tracking-[0.2em] uppercase text-muted-foreground">Support Workflow</span>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-2 text-balance">How I Work: Support + Automation</h2>
           <div className="w-10 h-0.5 bg-primary rounded-full mx-auto mt-4" />
         </motion.div>
 
@@ -63,6 +66,9 @@ const Process = () => {
                 <h3 className="font-heading text-lg font-bold text-foreground mb-4">{step.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
                   {step.desc}
+                </p>
+                <p className="mt-4 text-[11px] font-black uppercase tracking-[0.16em] text-primary/80">
+                  {step.output}
                 </p>
               </motion.div>
             ))}

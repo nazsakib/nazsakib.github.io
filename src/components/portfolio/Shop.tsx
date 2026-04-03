@@ -33,6 +33,11 @@ const Shop = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    if (IS_COMING_SOON) {
+      setLoading(false);
+      return;
+    }
+
     const fetchProducts = async () => {
       try {
         const response = await fetch(
@@ -75,6 +80,83 @@ const Shop = () => {
     }
     return "Digital Product";
   };
+
+  if (IS_COMING_SOON) {
+    return (
+      <section id="shop" className="py-24 bg-slate-dark/5 border-y border-border/50 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-[0.05]">
+          <div className="absolute top-[-12%] left-[-8%] w-[35%] h-[35%] rounded-full bg-primary blur-[120px]" />
+          <div className="absolute bottom-[-14%] right-[-10%] w-[38%] h-[38%] rounded-full bg-teal blur-[120px]" />
+        </div>
+
+        <div className="container relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <span className="text-xs font-bold tracking-[0.2em] uppercase text-muted-foreground">Store</span>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-2">Digital Products</h2>
+            <div className="w-10 h-0.5 bg-primary rounded-full mt-4 mb-10" />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="max-w-4xl mx-auto"
+          >
+            <div className="relative overflow-hidden rounded-[2.2rem] border border-white/10 bg-slate-dark text-white shadow-[0_25px_70px_rgba(0,0,0,0.35)]">
+              <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-primary/20 blur-3xl" />
+                <div className="absolute -bottom-10 -left-10 w-48 h-48 rounded-full bg-teal/20 blur-3xl" />
+              </div>
+
+              <div className="relative z-10 grid md:grid-cols-[1.2fr_0.8fr] gap-8 p-8 md:p-12 items-center">
+                <div>
+                  <span className="inline-flex items-center px-4 py-1.5 rounded-full border border-primary/40 bg-primary/20 text-primary text-[0.65rem] font-black uppercase tracking-[0.2em]">
+                    Coming Soon
+                  </span>
+                  <h3 className="font-heading text-2xl md:text-3xl font-black leading-tight mt-5">
+                    Premium support and automation packs are on the way.
+                  </h3>
+                  <p className="mt-4 text-sm md:text-base text-white/70 leading-relaxed max-w-xl">
+                    I am preparing practical digital resources for Shopify support teams, workflow automation, and operational troubleshooting.
+                  </p>
+
+                  <div className="mt-7 flex flex-wrap gap-2">
+                    {["Support Playbooks", "Automation Blueprints", "Troubleshooting Kits"].map((item) => (
+                      <span
+                        key={item}
+                        className="px-3 py-1.5 rounded-full border border-white/15 bg-white/5 text-[10px] font-black uppercase tracking-[0.14em] text-white/85"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="md:justify-self-end w-full max-w-xs rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
+                  <p className="text-[11px] font-black uppercase tracking-[0.2em] text-primary mb-3">Early Access</p>
+                  <p className="text-sm text-white/75 leading-relaxed mb-6">
+                    Want launch updates and early discounts?
+                  </p>
+                  <a
+                    href="#contact"
+                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-primary text-primary-foreground text-xs font-black uppercase tracking-[0.16em] hover:shadow-glow transition-all duration-300"
+                  >
+                    Join Waitlist <ShoppingBag size={14} />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    );
+  }
 
   if (loading) {
     return (

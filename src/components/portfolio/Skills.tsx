@@ -1,35 +1,65 @@
 import { motion } from "framer-motion";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  Bot,
+  Code2,
+  Database,
+  GitBranch,
+  Globe,
+  GraduationCap,
+  Headset,
+  Link2,
+  LucideIcon,
+  MessageSquare,
+  PenTool,
+  Server,
+  ShoppingBag,
+  Store,
+  Workflow,
+  Zap,
+} from "lucide-react";
 
-const skillCategories = [
+type Skill = {
+  icon: LucideIcon;
+  name: string;
+  desc: string;
+  context: string;
+};
+
+type SkillCategory = {
+  label: string;
+  skills: Skill[];
+};
+
+const skillCategories: SkillCategory[] = [
   {
     label: "CMS & Web Development",
     skills: [
-      { icon: "🛒", name: "Shopify & Liquid", desc: "Expert store design and theme customization using Liquid engine." },
-      { icon: "📦", name: "WordPress & PHP", desc: "Deep custom development, plugin building, and theme architecture." },
-      { icon: "🎓", name: "Tutor LMS & LearnDash", desc: "Advanced learning management system setup and troubleshooting." },
-      { icon: "🛍️", name: "WooCommerce", desc: "Scalable e-commerce solutions and checkout optimization." },
-      { icon: "🖌️", name: "Page Builders", desc: "Pixel-perfect design with Elementor, Divi, and WP Bakery." },
-      { icon: "🌐", name: "Core Web", desc: "Semantic HTML5, CSS3, and modern ES6+ JavaScript." },
+      { icon: Store, name: "Shopify & Liquid", desc: "Store support, app compatibility debugging, and practical theme customization.", context: "Merchant support + issue resolution" },
+      { icon: Globe, name: "WordPress & PHP", desc: "Custom WordPress implementations, plugin tuning, and performance-focused builds.", context: "Client delivery and maintenance" },
+      { icon: GraduationCap, name: "Tutor LMS & LearnDash", desc: "LMS setup, troubleshooting, and learner-flow optimization.", context: "Education platform support" },
+      { icon: ShoppingBag, name: "WooCommerce", desc: "Catalog, checkout, and payment configuration with conversion-aware UX.", context: "E-commerce operations" },
+      { icon: PenTool, name: "Page Builders", desc: "Structured landing page implementation with clean responsive behavior.", context: "Elementor, Divi, WP Bakery" },
+      { icon: Code2, name: "Core Web", desc: "Semantic HTML, modern CSS architecture, and reliable JavaScript logic.", context: "Frontend foundations" },
     ],
   },
   {
     label: "Automation & AI",
     skills: [
-      { icon: "⚙️", name: "n8n Automation", desc: "Building complex self-hosted workflow automations and nodes." },
-      { icon: "⚡", name: "Zapier Integration", desc: "Connecting 5000+ apps for seamless business efficiency." },
-      { icon: "🤖", name: "AI Workflows", desc: "Integrating LLMs (OpenAI, Claude) into production workflows." },
-      { icon: "💬", name: "Chatbots", desc: "Custom Telegram, Discord, and WhatsApp business bots." },
+      { icon: Workflow, name: "n8n Automation", desc: "Workflow orchestration for repetitive support and business operations.", context: "Self-hosted automation systems" },
+      { icon: Zap, name: "Zapier Integration", desc: "Fast app-to-app automations for alerts, notifications, and data sync.", context: "No-code automation delivery" },
+      { icon: Bot, name: "AI Workflows", desc: "LLM-assisted flows for drafting responses and operational decision support.", context: "OpenAI + Claude integrations" },
+      { icon: MessageSquare, name: "Chatbots", desc: "Telegram and platform bots for support commands and monitoring.", context: "Support workflow tooling" },
     ],
   },
   {
     label: "Support & Systems",
     skills: [
-      { icon: "🎫", name: "Technical Support", desc: "4.8★ rated support expert at Zepto Apps (130+ tickets/week)." },
-      { icon: "🗄️", name: "Databases", desc: "Relational database management with MySQL and PostgreSQL." },
-      { icon: "🌿", name: "Git & DevOps", desc: "CI/CD, version control, and Linux server management." },
-      { icon: "🖥️", name: "Hosting & SSH", desc: "Advanced cPanel, WHM, and command-line server optimization." },
-      { icon: "🔌", name: "REST APIs", desc: "Deep knowledge of HTTP protocols and API architecture." },
+      { icon: Headset, name: "Technical Support", desc: "High-volume issue handling with merchant-first communication.", context: "130-140 tickets/week at Zepto Apps" },
+      { icon: Database, name: "Databases", desc: "Query-level understanding for troubleshooting app and plugin data flow.", context: "MySQL and PostgreSQL" },
+      { icon: GitBranch, name: "Git & DevOps", desc: "Version control discipline and deployment awareness for stable releases.", context: "CI/CD and Linux workflows" },
+      { icon: Server, name: "Hosting & SSH", desc: "Server-side debugging and maintenance on shared and VPS environments.", context: "cPanel, WHM, shell operations" },
+      { icon: Link2, name: "REST APIs", desc: "Endpoint debugging, payload validation, and integration reliability checks.", context: "HTTP and API troubleshooting" },
     ],
   },
 ];
@@ -59,7 +89,9 @@ const Skills = () => {
                 </div>
                 
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                  {cat.skills.map((skill, si) => (
+                  {cat.skills.map((skill, si) => {
+                    const Icon = skill.icon;
+                    return (
                     <Tooltip key={skill.name}>
                       <TooltipTrigger asChild>
                         <motion.div
@@ -75,14 +107,20 @@ const Skills = () => {
                             duration: 0.5, 
                             ease: "easeOut" 
                           }}
-                          className="group relative bg-card border border-border/50 rounded-2xl p-6 flex flex-col items-center justify-center gap-4 text-center hover:border-primary/30 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] transition-all duration-300 cursor-default"
+                          className="group relative bg-card border border-border/50 rounded-2xl p-5 flex flex-col items-center justify-start gap-3 text-center hover:border-primary/30 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] transition-all duration-300 cursor-default min-h-[165px]"
                         >
                           <div className="absolute top-0 inset-x-0 h-1 bg-primary scale-x-0 group-hover:scale-x-50 transition-transform duration-500 rounded-full" />
-                          <div className="text-4xl filter grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
-                            {skill.icon}
+
+                          <div className="w-11 h-11 rounded-xl border border-primary/20 bg-primary/10 flex items-center justify-center text-primary">
+                            <Icon size={20} strokeWidth={2.2} />
                           </div>
-                          <span className="font-heading text-[11px] font-bold text-muted-foreground group-hover:text-foreground transition-colors tracking-tight">
+
+                          <span className="font-heading text-[11px] font-bold text-muted-foreground group-hover:text-foreground transition-colors tracking-tight leading-tight min-h-[30px] flex items-center">
                             {skill.name}
+                          </span>
+
+                          <span className="text-[10px] text-muted-foreground/90 leading-tight">
+                            {skill.context}
                           </span>
                         </motion.div>
                       </TooltipTrigger>
@@ -90,7 +128,8 @@ const Skills = () => {
                         <p className="text-xs leading-relaxed font-medium">{skill.desc}</p>
                       </TooltipContent>
                     </Tooltip>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             ))}

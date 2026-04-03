@@ -93,3 +93,5 @@ warn - If this is content and not a class, replace it with `ease-&lsqb;cubic-bez
 5:20:45 PM [vite] hmr update /src/pages/Index.tsx, /src/index.css
 5:22:22 PM [vite] hmr update /src/components/portfolio/SEO.tsx, /src/index.css
 5:22:32 PM [vite] page reload index.html
+5:29:47 PM [vite] hmr update /src/components/portfolio/SEO.tsx, /src/index.css
+5:30:53 PM [vite] page reload index.html

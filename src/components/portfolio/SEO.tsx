@@ -51,7 +51,7 @@ const SEO = ({
             "https://linkedin.com/in/sakibsnaz",
             "https://dev.to/sakibsnaz"
           ],
-          "jobTitle": "Full-Stack Developer",
+          "jobTitle": "Technical Support Engineer & Automation Specialist",
           "worksFor": {
             "@type": "Organization",
             "name": "Zepto Apps"
