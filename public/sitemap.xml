@@ -2,44 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sakibnazmush.vercel.app/</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://sakibnazmush.vercel.app/#about</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sakibnazmush.vercel.app/#projects</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://sakibnazmush.vercel.app/#shop</loc>
-    <lastmod>2026-04-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://sakibnazmush.vercel.app/#experience</loc>
+    <lastmod>2026-04-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sakibnazmush.vercel.app/#services</loc>
-    <lastmod>2026-04-02</lastmod>
+    <loc>https://sakibnazmush.vercel.app/#skills</loc>
+    <lastmod>2026-04-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sakibnazmush.vercel.app/#blog</loc>
-    <lastmod>2026-04-02</lastmod>
+    <loc>https://sakibnazmush.vercel.app/#services</loc>
+    <lastmod>2026-04-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sakibnazmush.vercel.app/#shop</loc>
+    <lastmod>2026-04-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sakibnazmush.vercel.app/#process</loc>
+    <lastmod>2026-04-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://sakibnazmush.vercel.app/#contact</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sakibnazmush.vercel.app/#blog</loc>
+    <lastmod>2026-04-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
