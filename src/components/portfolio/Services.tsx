@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { EASE_OUT, VIEWPORT_INVIEW, scrollReveal, staggerDelay } from "@/lib/motion";
 import { ShoppingBag, Globe, Zap, Check, ChevronRight } from "lucide-react";
 
 const services = [
@@ -47,12 +48,7 @@ const Services = () => {
   return (
     <section id="services" className="py-24 bg-surface-warm relative overflow-hidden">
       <div className="container relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-        >
+        <motion.div {...scrollReveal()}>
           <span className="text-xs font-bold tracking-[0.2em] uppercase text-muted-foreground">Expertise</span>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-2">Services & Solutions</h2>
           <div className="w-10 h-0.5 bg-primary rounded-full mt-4 mb-12" />
@@ -62,10 +58,10 @@ const Services = () => {
           {services.map((s, i) => (
             <motion.div
               key={s.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5, ease: "easeOut" }}
+              viewport={VIEWPORT_INVIEW}
+              transition={{ delay: staggerDelay(i, 0.06), duration: 0.42, ease: EASE_OUT }}
               className="group relative p-px rounded-[2rem] overflow-hidden"
             >
               {/* 5. Gradient Border on Hover */}

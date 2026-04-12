@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { motion } from "framer-motion";
 import Navbar from "@/components/portfolio/Navbar";
 import Hero from "@/components/portfolio/Hero";
 import ScrollToTop from "@/components/portfolio/ScrollToTop";
@@ -30,9 +29,7 @@ const Index = () => {
   return (
     <>
       <SEO />
-      <motion.div 
-        className="min-h-screen"
-      >
+      <div className="min-h-screen">
         <Navbar />
         <Hero />
         <About />
@@ -46,7 +43,7 @@ const Index = () => {
         <Blog />
         <Footer />
         <ScrollToTop />
-      </motion.div>
+      </div>
     </>
   );
 };

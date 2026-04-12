@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { EASE_OUT, VIEWPORT_INVIEW, fadeUpVariants } from "@/lib/motion";
 
 const signatureStats = [
   {
@@ -36,10 +37,7 @@ const highlights = [
   { icon: "✍️", title: "Technical Writer", desc: "Practical WordPress & LMS articles on dev.to helping developers solve real-world problems." },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1,duration: 0.5, ease: "easeOut" } }),
-};
+const aboutHeaderVariants = fadeUpVariants(0.055);
 
 const About = () => {
   return (
@@ -48,8 +46,8 @@ const About = () => {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeUp}
+          viewport={VIEWPORT_INVIEW}
+          variants={aboutHeaderVariants}
           custom={0}
         >
           <span className="text-xs font-bold tracking-[0.2em] uppercase text-muted-foreground">About Me</span>
@@ -65,10 +63,10 @@ const About = () => {
           {signatureStats.map((stat, i) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
+              viewport={VIEWPORT_INVIEW}
+              transition={{ delay: i * 0.05, duration: 0.42, ease: EASE_OUT }}
               className="rounded-2xl border border-border bg-card p-5 shadow-sm"
             >
               <p className="text-2xl font-black font-heading text-foreground leading-none">{stat.value}</p>
@@ -83,8 +81,8 @@ const About = () => {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
+            viewport={VIEWPORT_INVIEW}
+            variants={aboutHeaderVariants}
             custom={1}
             className="space-y-4 text-[0.95rem] leading-relaxed text-muted-foreground"
           >
@@ -127,10 +125,10 @@ const About = () => {
                 key={h.title}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
+                viewport={VIEWPORT_INVIEW}
+                variants={aboutHeaderVariants}
                 custom={i + 2}
-                className="flex items-start gap-3 p-4 rounded-xl bg-card border border-border hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 group"
+                className="flex items-start gap-3 p-4 rounded-xl bg-card border border-border hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group"
               >
                 <span className="text-xl flex-shrink-0 mt-0.5">{h.icon}</span>
                 <div>

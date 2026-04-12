@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { heroBadge, heroColumn, heroImageReveal } from "@/lib/motion";
 import { Star, Zap, Clock } from "lucide-react";
 import OptimizedImage from "@/components/ui/OptimizedImage";
 import Magnetic from "@/components/ui/Magnetic";
@@ -7,11 +8,12 @@ import Magnetic from "@/components/ui/Magnetic";
 const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const { scrollY } = useScroll();
-  
-  // High-performance parallax layers
-  const contentY = useTransform(scrollY, [0, 500], [0, -30]);
-  const imageY = useTransform(scrollY, [0, 500], [0, 60]);
-  const pillsY = useTransform(scrollY, [0, 500], [0, 40]);
+  const reduceMotion = useReducedMotion();
+  const parallaxOff = reduceMotion === true;
+
+  const contentY = useTransform(scrollY, [0, 500], [0, parallaxOff ? 0 : -18]);
+  const imageY = useTransform(scrollY, [0, 500], [0, parallaxOff ? 0 : 36]);
+  const pillsY = useTransform(scrollY, [0, 500], [0, parallaxOff ? 0 : 24]);
 
   useEffect(() => {
     let rafId: number;
@@ -29,9 +31,18 @@ const Hero = () => {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center bg-slate-dark overflow-hidden pt-20">
-      {/* Background Layer: Typography */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
-        <h1 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[22vw] font-black text-white/[0.02] tracking-tighter leading-none whitespace-nowrap">
+      {/* Background layer: flush to hero bottom — m-0 resets UA h1 margins; tight line-height trims em-box slack */}
+      <div
+        className="absolute inset-0 z-0 flex items-end justify-center overflow-hidden pointer-events-none select-none"
+        aria-hidden
+      >
+        <h1
+          className="m-0 max-w-[100vw] shrink-0 whitespace-nowrap p-0 text-center font-black tracking-tighter text-white/[0.02]"
+          style={{
+            fontSize: "clamp(4.5rem, calc(22vw + 180px), min(48rem, 92vw))",
+            lineHeight: 0.68,
+          }}
+        >
           SAKIBSNAZ
         </h1>
       </div>
@@ -50,15 +61,15 @@ const Hero = () => {
           {/* Left: Content Column */}
           <motion.div
             style={{ y: contentY }}
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            initial={heroColumn.initial}
+            animate={heroColumn.animate}
+            transition={heroColumn.transition}
             className="flex-1 text-center lg:text-left z-30 max-w-2xl"
           >
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
+              initial={heroBadge.initial}
+              animate={heroBadge.animate}
+              transition={heroBadge.transition}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8"
             >
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
@@ -103,9 +114,9 @@ const Hero = () => {
             {/* The Silhouette Image */}
             <motion.div
               style={{ y: imageY }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 1.2, ease: "easeOut" }}
+              initial={heroImageReveal.initial}
+              animate={heroImageReveal.animate}
+              transition={heroImageReveal.transition}
               className="relative w-full h-full pointer-events-none group z-10"
             >
               <div className="relative w-full h-full overflow-hidden !bg-slate-dark/20">

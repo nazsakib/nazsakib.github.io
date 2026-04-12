@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { EASE_OUT, VIEWPORT_INVIEW, scrollReveal } from "@/lib/motion";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import {
   Bot,
@@ -68,12 +69,7 @@ const Skills = () => {
   return (
     <section id="skills" className="py-24 bg-background overflow-hidden">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-        >
+        <motion.div {...scrollReveal()}>
           <span className="text-xs font-bold tracking-[0.2em] uppercase text-muted-foreground">Skills & Expertise</span>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-2">Technical Arsenal</h2>
           <div className="w-10 h-0.5 bg-primary rounded-full mt-4 mb-10" />
@@ -95,19 +91,19 @@ const Skills = () => {
                     <Tooltip key={skill.name}>
                       <TooltipTrigger asChild>
                         <motion.div
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          viewport={{ once: true }}
-                          whileHover={{ 
-                            y: -8,
-                            transition: { type: "spring", stiffness: 400, damping: 10 }
+                          initial={{ opacity: 0, y: 10 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={VIEWPORT_INVIEW}
+                          whileHover={{
+                            y: -4,
+                            transition: { type: "spring", stiffness: 320, damping: 22 },
                           }}
-                          transition={{ 
-                            delay: (ci * 0.1) + (si * 0.04),
-                            duration: 0.5, 
-                            ease: "easeOut" 
+                          transition={{
+                            delay: ci * 0.06 + si * 0.022,
+                            duration: 0.4,
+                            ease: EASE_OUT,
                           }}
-                          className="group relative bg-card border border-border/50 rounded-2xl p-5 flex flex-col items-center justify-start gap-3 text-center hover:border-primary/30 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] transition-all duration-300 cursor-default min-h-[165px]"
+                          className="group relative bg-card border border-border/50 rounded-2xl p-5 flex flex-col items-center justify-start gap-3 text-center hover:border-primary/30 hover:shadow-[0_16px_32px_-12px_rgba(0,0,0,0.08)] transition-shadow duration-300 cursor-default min-h-[165px]"
                         >
                           <div className="absolute top-0 inset-x-0 h-1 bg-primary scale-x-0 group-hover:scale-x-50 transition-transform duration-500 rounded-full" />
 

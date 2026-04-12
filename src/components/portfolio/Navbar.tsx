@@ -4,6 +4,7 @@ import { Menu, X, Linkedin } from "lucide-react";
 
 const navLinks = [
   { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
   { label: "Expertise", href: "#services" },
   { label: "Work", href: "#projects" },
   { label: "Store", href: "#shop" },
@@ -71,7 +72,11 @@ const Navbar = () => {
 
           {/* Mobile Toggle */}
           <button
+            type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav-menu"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
             className={`md:hidden p-2.5 rounded-full transition-all duration-300 ${
               scrolled || mobileOpen 
                 ? "bg-primary/10 text-primary" 
@@ -86,10 +91,11 @@ const Navbar = () => {
         <AnimatePresence>
           {mobileOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -20, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -20, scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              id="mobile-nav-menu"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
               className="absolute top-full left-0 right-0 mt-4 mx-2 md:hidden overflow-hidden glass border border-white/10 rounded-3xl shadow-2xl p-6"
             >
               <div className="flex flex-col gap-4">

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { EASE_OUT, VIEWPORT_INVIEW, scrollReveal, staggerDelay } from "@/lib/motion";
 import { LifeBuoy, Bug, FileText } from "lucide-react";
 
 const steps = [
@@ -29,13 +30,7 @@ const Process = () => {
   return (
     <section id="process" className="py-24 bg-background">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="text-center max-w-2xl mx-auto mb-16"
-        >
+        <motion.div {...scrollReveal()} className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-xs font-bold tracking-[0.2em] uppercase text-muted-foreground">Support Workflow</span>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-2 text-balance">How I Work: Support + Automation</h2>
           <div className="w-10 h-0.5 bg-primary rounded-full mx-auto mt-4" />
@@ -49,14 +44,14 @@ const Process = () => {
             {steps.map((step, i) => (
               <motion.div
                 key={step.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15, duration: 0.5, ease: "easeOut" }}
+                viewport={VIEWPORT_INVIEW}
+                transition={{ delay: staggerDelay(i, 0.08), duration: 0.42, ease: EASE_OUT }}
                 className="flex flex-col items-center text-center group"
               >
                 <div className="relative mb-8">
-                  <div className="w-16 h-16 rounded-full bg-card border border-border flex items-center justify-center text-primary shadow-xl group-hover:border-primary/50 group-hover:scale-110 transition-all duration-500">
+                  <div className="w-16 h-16 rounded-full bg-card border border-border flex items-center justify-center text-primary shadow-xl group-hover:border-primary/50 group-hover:scale-[1.04] transition-all duration-300">
                     {step.icon}
                   </div>
                   <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-primary text-primary-foreground text-[10px] font-black flex items-center justify-center shadow-lg">

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { EASE_OUT, VIEWPORT_INVIEW, scrollReveal, staggerDelay } from "@/lib/motion";
 import { ExternalLink } from "lucide-react";
 import OptimizedImage from "@/components/ui/OptimizedImage";
 
@@ -72,12 +73,7 @@ const Projects = () => {
   return (
     <section id="projects" className="py-24 bg-background">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-        >
+        <motion.div {...scrollReveal()}>
           <span className="text-xs font-bold tracking-[0.2em] uppercase text-muted-foreground">Projects</span>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-2">Things I've Built</h2>
           <div className="w-10 h-0.5 bg-primary rounded-full mt-4 mb-10" />
@@ -87,18 +83,18 @@ const Projects = () => {
           {projects.map((p, i) => (
             <motion.div
               key={p.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
-              className="group flex flex-col glass bg-card/40 border border-white/5 rounded-[2.5rem] overflow-hidden hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:shadow-primary/5 hover:-translate-y-3 transition-all duration-500 backdrop-blur-md"
+              viewport={VIEWPORT_INVIEW}
+              transition={{ delay: staggerDelay(i, 0.045), duration: 0.42, ease: EASE_OUT }}
+              className="group flex flex-col glass bg-card/40 border border-white/5 rounded-[2.5rem] overflow-hidden hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:shadow-primary/5 hover:-translate-y-2 transition-all duration-400 backdrop-blur-md"
             >
               {/* Image Section */}
               <div className="relative overflow-hidden aspect-[16/10] rounded-[2rem] m-3 shadow-inner">
                 <OptimizedImage
                   src={p.img}
                   alt={`${p.title} — Built by Sakib MD Nazmush (sakibsnaz) using ${p.tags.join(", ")}`}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03] group-hover:rotate-[0.5deg]"
                 />
                 
                 {/* Floating Category Pill */}
