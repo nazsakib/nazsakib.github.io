@@ -21,16 +21,30 @@ interface DevToArticle {
   };
 }
 
-const BLOG_COUNT = 4;
-
 const fetchArticles = async (): Promise<DevToArticle[]> => {
   const timestamp = new Date().getTime();
+  // Fetch a larger pool to allow for popular sorting
   const res = await fetch(
-    `https://dev.to/api/articles/latest?username=sakibsnaz&per_page=${BLOG_COUNT}&t=${timestamp}`,
+    `https://dev.to/api/articles/latest?username=sakibsnaz&per_page=30&t=${timestamp}`,
     { cache: "no-store" }
   );
   if (!res.ok) throw new Error("Failed to fetch articles");
-  return res.json();
+  const allArticles: DevToArticle[] = await res.json();
+  
+  if (allArticles.length === 0) return [];
+
+  // 1. The first item is always the absolute latest post
+  const latest = allArticles[0];
+  
+  // 2. Sort the remaining articles by popularity: (Reactions * 1) + (Comments * 5)
+  const popular = allArticles.slice(1).sort((a, b) => {
+    const scoreA = a.positive_reactions_count + (a.comments_count * 5);
+    const scoreB = b.positive_reactions_count + (b.comments_count * 5);
+    return scoreB - scoreA;
+  });
+
+  // 3. Combine latest + top 3 most engaging
+  return [latest, ...popular.slice(0, 3)];
 };
 
 const Blog = () => {
@@ -41,7 +55,7 @@ const Blog = () => {
     refetchOnWindowFocus: true,
   });
 
-  const list = articles?.slice(0, BLOG_COUNT) ?? [];
+  const list = articles ?? [];
   const featuredArticle = list[0];
   const moreArticles = list.slice(1);
 

@@ -1,3 +1,5 @@
+import { Linkedin, Github, BookOpen, Mail } from "lucide-react";
+
 const Footer = () => {
   const year = new Date().getFullYear();
   const quickLinks = [
@@ -9,9 +11,9 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/sakibsnaz/" },
-    { label: "GitHub", href: "https://github.com/nazsakib" },
-    { label: "dev.to", href: "https://dev.to/sakibsnaz" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/sakibsnaz/", icon: <Linkedin size={14} /> },
+    { label: "GitHub", href: "https://github.com/nazsakib", icon: <Github size={14} /> },
+    { label: "dev.to", href: "https://dev.to/sakibsnaz", icon: <BookOpen size={14} /> },
   ];
 
   const productLinks = [
@@ -93,15 +95,17 @@ const Footer = () => {
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                  className="flex items-center gap-2 text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
                 >
+                  {link.icon}
                   {link.label}
                 </a>
               ))}
               <a
                 href="mailto:sakibsnaz@gmail.com"
-                className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                className="flex items-center gap-2 text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
               >
+                <Mail size={14} />
                 sakibsnaz@gmail.com
               </a>
             </div>

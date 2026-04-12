@@ -15,15 +15,25 @@ import Contact from "@/components/portfolio/Contact";
 import Footer from "@/components/portfolio/Footer";
 
 const Index = () => {
-  // Fix for reload scroll position issue
   useEffect(() => {
-    // Disable browser default scroll restoration
-    if ('scrollRestoration' in window.history) {
-      window.history.scrollRestoration = 'manual';
+    // Handle hash navigation on initial load/reload
+    const hash = window.location.hash;
+    if (hash) {
+      // Small delay to ensure the DOM is fully rendered and layout is stable
+      const timeoutId = setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+      return () => clearTimeout(timeoutId);
+    } else {
+      // Only force scroll to top if there is no hash
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'manual';
+      }
+      window.scrollTo(0, 0);
     }
-    
-    // Force scroll to top on mount/reload
-    window.scrollTo(0, 0);
   }, []);
 
   return (
