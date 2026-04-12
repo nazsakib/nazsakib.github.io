@@ -33,9 +33,9 @@ const Footer = () => {
           <div>
             <p className="text-[11px] font-black uppercase tracking-[0.2em] text-primary/90">Sakib MD Nazmush</p>
             <h3 className="font-heading text-2xl font-black mt-3 leading-tight">
-              Technical Support Engineer
+              Shopify, WordPress
               <br />
-              for Shopify and Automation.
+              & Automation
             </h3>
             <p className="text-sm text-primary-foreground/55 mt-4 max-w-md leading-relaxed">
               Solving high-volume support issues with clear communication, reliable fixes, and scalable workflows.
