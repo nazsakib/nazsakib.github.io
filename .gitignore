@@ -27,3 +27,4 @@ dist-ssr
 public/placeholder.svg
 .env
 .env.local
+*.txt
