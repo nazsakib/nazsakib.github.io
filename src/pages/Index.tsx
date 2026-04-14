@@ -1,18 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense, lazy } from "react";
 import Navbar from "@/components/portfolio/Navbar";
 import Hero from "@/components/portfolio/Hero";
 import ScrollToTop from "@/components/portfolio/ScrollToTop";
 import SEO from "@/components/portfolio/SEO";
 import About from "@/components/portfolio/About";
-import Services from "@/components/portfolio/Services";
-import Process from "@/components/portfolio/Process";
 import Projects from "@/components/portfolio/Projects";
-import Shop from "@/components/portfolio/Shop";
-import Experience from "@/components/portfolio/Experience";
-import Skills from "@/components/portfolio/Skills";
-import Blog from "@/components/portfolio/Blog";
-import Contact from "@/components/portfolio/Contact";
-import Footer from "@/components/portfolio/Footer";
+
+// Below-the-fold sections — lazy-loaded for code-splitting
+const Experience = lazy(() => import("@/components/portfolio/Experience"));
+const Skills = lazy(() => import("@/components/portfolio/Skills"));
+const Services = lazy(() => import("@/components/portfolio/Services"));
+const Shop = lazy(() => import("@/components/portfolio/Shop"));
+const Process = lazy(() => import("@/components/portfolio/Process"));
+const Contact = lazy(() => import("@/components/portfolio/Contact"));
+const Blog = lazy(() => import("@/components/portfolio/Blog"));
+const Footer = lazy(() => import("@/components/portfolio/Footer"));
+
+const SectionFallback = () => (
+  <div className="min-h-[200px] animate-pulse bg-secondary/50" aria-hidden />
+);
 
 const Index = () => {
   useEffect(() => {
@@ -44,14 +50,14 @@ const Index = () => {
         <Hero />
         <About />
         <Projects />
-        <Experience />
-        <Skills />
-        <Services />
-        <Shop />
-        <Process />
-        <Contact />
-        <Blog />
-        <Footer />
+        <Suspense fallback={<SectionFallback />}><Experience /></Suspense>
+        <Suspense fallback={<SectionFallback />}><Skills /></Suspense>
+        <Suspense fallback={<SectionFallback />}><Services /></Suspense>
+        <Suspense fallback={<SectionFallback />}><Shop /></Suspense>
+        <Suspense fallback={<SectionFallback />}><Process /></Suspense>
+        <Suspense fallback={<SectionFallback />}><Contact /></Suspense>
+        <Suspense fallback={<SectionFallback />}><Blog /></Suspense>
+        <Suspense fallback={<SectionFallback />}><Footer /></Suspense>
         <ScrollToTop />
       </div>
     </>

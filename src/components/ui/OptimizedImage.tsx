@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 interface OptimizedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string;
@@ -7,43 +7,74 @@ interface OptimizedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> 
   wrapperClassName?: string;
 }
 
-const OptimizedImage: React.FC<OptimizedImageProps> = ({ 
-  src, 
-  alt, 
-  className = "", 
+const OptimizedImage: React.FC<OptimizedImageProps> = ({
+  src,
+  alt,
+  className = "",
   wrapperClassName = "",
-  ...props 
+  loading = "lazy",
+  decoding = "async",
+  ...props
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [currentSrc, setCurrentSrc] = useState<string | null>(null);
+  const isMountedRef = useRef(true);
+
+  const handleLoad = useCallback(() => {
+    if (isMountedRef.current) {
+      setIsLoaded(true);
+    }
+  }, []);
 
   useEffect(() => {
-    // Only load the image once it's mounted or if it's already in cache
+    isMountedRef.current = true;
+    setIsLoaded(false);
+
+    // Preload image to detect when it's ready
     const img = new Image();
     img.src = src;
     img.onload = () => {
-      setCurrentSrc(src);
-      setIsLoaded(true);
+      if (isMountedRef.current) {
+        // Small delay so the browser has painted
+        requestAnimationFrame(() => {
+          if (isMountedRef.current) setIsLoaded(true);
+        });
+      }
+    };
+    img.onerror = () => {
+      // Still show the image even if preload failed — let the <img> tag try directly
+      if (isMountedRef.current) setIsLoaded(true);
+    };
+
+    return () => {
+      isMountedRef.current = false;
+      img.onload = null;
+      img.onerror = null;
     };
   }, [src]);
 
   return (
     <div className={`relative overflow-hidden bg-secondary ${wrapperClassName}`}>
-      {/* Blurry placeholder (if it hasn't loaded yet) */}
-      <div 
-        className={`absolute inset-0 bg-muted transition-opacity duration-700 ease-in-out ${isLoaded ? 'opacity-0' : 'opacity-100 animate-pulse'}`}
+      {/* Placeholder shown until image loads */}
+      <div
+        className={`absolute inset-0 bg-muted transition-opacity duration-500 ease-in-out ${
+          isLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
+        }`}
+        aria-hidden
       />
-      
+
       {/* Actual image */}
-      {currentSrc && (
-        <img
-          src={currentSrc}
-          alt={alt}
-          loading="lazy"
-          className={`transition-opacity duration-700 ease-in-out ${isLoaded ? 'opacity-100' : 'opacity-0'} ${className}`}
-          {...props}
-        />
-      )}
+      <img
+        src={src}
+        alt={alt}
+        loading={loading}
+        decoding={decoding}
+        onLoad={handleLoad}
+        onError={handleLoad}
+        className={`transition-opacity duration-700 ease-in-out ${
+          isLoaded ? 'opacity-100' : 'opacity-0'
+        } ${className}`}
+        {...props}
+      />
     </div>
   );
 };
