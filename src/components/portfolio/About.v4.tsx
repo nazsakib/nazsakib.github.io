@@ -1,6 +1,3 @@
-import { motion } from "framer-motion";
-import { EASE_OUT, VIEWPORT_INVIEW, fadeUpVariants, scrollReveal } from "@/lib/motion";
-
 const statCards = [
   {
     value: "130–140",
@@ -34,14 +31,7 @@ const AboutV4 = () => {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(45,212,191,0.16),_transparent_45%),radial-gradient(circle_at_bottom_right,_rgba(14,165,233,0.12),_transparent_35%)]" aria-hidden />
 
       <div className="container relative">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={VIEWPORT_INVIEW}
-          variants={fadeUpVariants(0.06)}
-          custom={0}
-          className="max-w-4xl"
-        >
+        <div className="max-w-4xl">
           <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1.5">
             <span className="h-2 w-2 rounded-full bg-primary" />
             <span className="text-[10px] font-black uppercase tracking-[0.24em] text-primary">About Me</span>
@@ -57,13 +47,10 @@ const AboutV4 = () => {
           <p className="mt-5 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">
             I’m Sakib MD Nazmush, a technical support engineer who works best in fast-moving environments where accuracy, empathy, and momentum matter at the same time.
           </p>
-        </motion.div>
+        </div>
 
         <div className="mt-10 grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
-          <motion.div
-            {...scrollReveal(0.08)}
-            className="rounded-[2rem] border border-border/80 bg-card/85 p-6 shadow-[0_20px_80px_-30px_rgba(15,23,42,0.28)] backdrop-blur sm:p-8"
-          >
+          <div className="rounded-[2rem] border border-border/80 bg-card/85 p-6 shadow-[0_20px_80px_-30px_rgba(15,23,42,0.28)] backdrop-blur sm:p-8">
             <div className="flex items-center justify-between gap-3">
               <div>
                 <p className="text-[11px] font-black uppercase tracking-[0.24em] text-primary">Working style</p>
@@ -83,31 +70,17 @@ const AboutV4 = () => {
             </p>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
-              {statCards.map((item, index) => (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={VIEWPORT_INVIEW}
-                  transition={{ delay: index * 0.06, duration: 0.35, ease: EASE_OUT }}
-                  className="rounded-2xl border border-border/70 bg-background/70 p-4"
-                >
+              {statCards.map((item) => (
+                <div key={item.label} className="rounded-2xl border border-border/70 bg-background/70 p-4">
                   <p className="font-mono text-2xl font-black leading-none text-foreground">{item.value}</p>
                   <p className="mt-2 text-[11px] font-black uppercase tracking-[0.18em] text-primary">{item.label}</p>
                   <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{item.detail}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={VIEWPORT_INVIEW}
-            variants={fadeUpVariants(0.08)}
-            custom={1}
-            className="flex flex-col gap-4 self-stretch"
-          >
+          <div className="flex flex-col gap-4 self-stretch">
             <div className="flex-1 rounded-[2rem] border border-border/80 bg-background/70 p-6 shadow-sm min-h-[240px]">
               <p className="text-[11px] font-black uppercase tracking-[0.24em] text-muted-foreground">What I bring</p>
               <div className="mt-4 flex flex-wrap gap-2">
@@ -133,7 +106,7 @@ const AboutV4 = () => {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

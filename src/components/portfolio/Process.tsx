@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-import { EASE_OUT, VIEWPORT_INVIEW, scrollReveal, staggerDelay } from "@/lib/motion";
 import { LifeBuoy, Bug, FileText } from "lucide-react";
 
 const steps = [
@@ -30,11 +28,11 @@ const Process = () => {
   return (
     <section id="process" className="py-24 bg-background">
       <div className="container">
-        <motion.div {...scrollReveal()} className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-xs font-bold tracking-[0.2em] uppercase text-muted-foreground">Support Workflow</span>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-2 text-balance">How I Work: Support + Automation</h2>
           <div className="w-10 h-0.5 bg-primary rounded-full mx-auto mt-4" />
-        </motion.div>
+        </div>
 
         <div className="relative">
           {/* Connector Line - Desktop Only */}
@@ -42,14 +40,7 @@ const Process = () => {
 
           <div className="grid lg:grid-cols-3 gap-12 relative z-10">
             {steps.map((step, i) => (
-              <motion.div
-                key={step.title}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={VIEWPORT_INVIEW}
-                transition={{ delay: staggerDelay(i, 0.08), duration: 0.42, ease: EASE_OUT }}
-                className="flex flex-col items-center text-center group"
-              >
+              <div key={step.title} className="flex flex-col items-center text-center group">
                 <div className="relative mb-8">
                   <div className="w-16 h-16 rounded-full bg-card border border-border flex items-center justify-center text-primary shadow-xl group-hover:border-primary/50 group-hover:scale-[1.04] transition-all duration-300">
                     {step.icon}
@@ -65,7 +56,7 @@ const Process = () => {
                 <p className="mt-4 text-[11px] font-black uppercase tracking-[0.16em] text-primary/80">
                   {step.output}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

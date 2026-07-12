@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { EASE_OUT, VIEWPORT_INVIEW, scrollReveal, staggerDelay } from "@/lib/motion";
 import { ShoppingBag, Loader2 } from "lucide-react";
 import OptimizedImage from "@/components/ui/OptimizedImage";
 
@@ -91,19 +89,13 @@ const Shop = () => {
         </div>
 
         <div className="container relative z-10">
-          <motion.div {...scrollReveal()}>
+          <div>
             <span className="text-xs font-bold tracking-[0.2em] uppercase text-muted-foreground">Store</span>
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-2">Digital Products</h2>
             <div className="w-10 h-0.5 bg-primary rounded-full mt-4 mb-10" />
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={VIEWPORT_INVIEW}
-            transition={{ duration: 0.45, delay: 0.05, ease: EASE_OUT }}
-            className="max-w-4xl mx-auto"
-          >
+          <div className="max-w-4xl mx-auto">
             <div className="relative overflow-hidden rounded-[2.2rem] border border-white/10 bg-slate-dark text-white shadow-[0_25px_70px_rgba(0,0,0,0.35)]">
               <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-primary/20 blur-3xl" />
@@ -148,7 +140,7 @@ const Shop = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     );
@@ -178,11 +170,11 @@ const Shop = () => {
       </div>
 
       <div className="container relative z-10">
-        <motion.div {...scrollReveal()}>
+        <div>
           <span className="text-xs font-bold tracking-[0.2em] uppercase text-muted-foreground">Store</span>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-2">Digital Products</h2>
           <div className="w-10 h-0.5 bg-primary rounded-full mt-4 mb-10" />
-        </motion.div>
+        </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product, i) => {
@@ -195,14 +187,7 @@ const Shop = () => {
             if (!product.id || !product.name) return null;
             
             return (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={VIEWPORT_INVIEW}
-                transition={{ delay: staggerDelay(i, 0.05), duration: 0.42, ease: EASE_OUT }}
-                className={`group flex flex-col glass bg-card/40 border border-white/5 rounded-3xl overflow-hidden transition-all duration-400 backdrop-blur-md relative ${!IS_COMING_SOON ? 'hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:shadow-primary/5 hover:-translate-y-2' : ''}`}
-              >
+              <div key={product.id} className={`group flex flex-col glass bg-card/40 border border-white/5 rounded-3xl overflow-hidden transition-all duration-400 backdrop-blur-md relative ${!IS_COMING_SOON ? 'hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:shadow-primary/5 hover:-translate-y-2' : ''}`}>
                 {/* Coming Soon Center Overlay */}
                 {IS_COMING_SOON && (
                   <div className="absolute inset-0 z-40 flex items-center justify-center p-6 bg-slate-dark/20 backdrop-blur-[2px]">
@@ -296,7 +281,7 @@ const Shop = () => {
                     )}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

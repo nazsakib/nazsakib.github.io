@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-import { EASE_OUT, VIEWPORT_INVIEW, scrollReveal, staggerDelay } from "@/lib/motion";
 
 const impactStats = [
   {
@@ -91,7 +89,7 @@ const Experience = () => {
   return (
     <section id="experience" className="py-24 bg-secondary">
       <div className="container">
-        <motion.div {...scrollReveal()}>
+        <div>
           <span className="text-xs font-bold tracking-[0.2em] uppercase text-muted-foreground">Experience</span>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-2">
             Support-Led Work
@@ -99,22 +97,15 @@ const Experience = () => {
             with Measurable Impact
           </h2>
           <div className="w-10 h-0.5 bg-primary rounded-full mt-4 mb-10" />
-        </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-3 gap-4 mb-10">
           {impactStats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={VIEWPORT_INVIEW}
-              transition={{ delay: staggerDelay(i, 0.05), duration: 0.42, ease: EASE_OUT }}
-              className="rounded-2xl border border-border bg-card p-5"
-            >
+            <div key={stat.label} className="rounded-2xl border border-border bg-card p-5">
               <p className="text-2xl font-black font-heading text-foreground leading-none">{stat.value}</p>
               <p className="mt-2 text-[11px] font-black uppercase tracking-[0.18em] text-primary">{stat.label}</p>
               <p className="mt-2 text-xs text-muted-foreground leading-relaxed">{stat.detail}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
 
@@ -134,13 +125,7 @@ const Experience = () => {
                 )}
               </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={VIEWPORT_INVIEW}
-                transition={{ delay: staggerDelay(i, 0.07), duration: 0.42, ease: EASE_OUT }}
-                className="min-w-0 flex-1"
-              >
+              <div className="min-w-0 flex-1">
                 <div className="rounded-2xl border border-border bg-card p-6 md:p-7 transition-shadow duration-300 hover:shadow-[0_18px_45px_-18px_rgba(0,0,0,0.2)]">
                   <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
                     <div className="flex items-start gap-3">
@@ -209,7 +194,7 @@ const Experience = () => {
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           ))}
         </div>

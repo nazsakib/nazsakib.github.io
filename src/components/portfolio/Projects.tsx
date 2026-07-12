@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { EASE_OUT, VIEWPORT_INVIEW, scrollReveal, staggerDelay } from "@/lib/motion";
 import { ExternalLink } from "lucide-react";
 import OptimizedImage from "@/components/ui/OptimizedImage";
 
@@ -85,13 +83,13 @@ const Projects = () => {
   return (
     <section id="projects" className="py-24 bg-background">
       <div className="container">
-        <motion.div {...scrollReveal()}>
+        <div>
           <span className="text-xs font-bold tracking-[0.2em] uppercase text-muted-foreground">Projects</span>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-2">Things I've Built</h2>
           <div className="w-10 h-0.5 bg-primary rounded-full mt-4 mb-10" />
-        </motion.div>
+        </div>
 
-        <motion.div {...scrollReveal()} className="flex flex-wrap gap-3 mb-8">
+        <div className="flex flex-wrap gap-3 mb-8">
           {projectFilters.map((filter) => (
             <button
               key={filter.key}
@@ -106,18 +104,11 @@ const Projects = () => {
               {filter.label}
             </button>
           ))}
-        </motion.div>
+        </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((p, i) => (
-            <motion.div
-              key={p.title}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={VIEWPORT_INVIEW}
-              transition={{ delay: staggerDelay(i, 0.045), duration: 0.42, ease: EASE_OUT }}
-              className="group flex flex-col glass bg-card/40 border border-white/5 rounded-[2.5rem] overflow-hidden hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:shadow-primary/5 hover:-translate-y-2 transition-all duration-400 backdrop-blur-md"
-            >
+            <div key={p.title} className="group flex flex-col glass bg-card/40 border border-white/5 rounded-[2.5rem] overflow-hidden hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:shadow-primary/5 hover:-translate-y-2 transition-all duration-400 backdrop-blur-md">
               {/* Image Section */}
               <div className="relative overflow-hidden aspect-[16/10] rounded-[2rem] m-3 shadow-inner">
                 <OptimizedImage
@@ -127,8 +118,8 @@ const Projects = () => {
                 />
                 
                 {/* Floating Category Pill */}
-                <div className="absolute top-4 left-4 px-4 py-1.5 bg-slate-dark/60 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl z-20">
-                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">
+                <div className="absolute top-4 left-4 z-20 rounded-full border border-white/20 bg-slate-950/80 px-4 py-1.5 shadow-[0_10px_30px_rgba(0,0,0,0.35)] backdrop-blur-xl">
+                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">
                     {p.category}
                   </span>
                 </div>
@@ -170,7 +161,7 @@ const Projects = () => {
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
